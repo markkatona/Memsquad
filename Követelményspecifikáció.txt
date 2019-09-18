@@ -14,6 +14,11 @@ Követelményspecifikáció
 - a tábla négyzet alakú legyen és legyen felosztva 6x6 darab kisebb négyzetre
 - a tábla négyzetei közül néhány villanjon fel, egyenként, sorrendben
 - a sorrendben felvillant négyzetekre a játékosnak ugyan ilyen sorrendben kelljen rákattintania
+- helyesen megoldott feladatért kapjon a játékos tapasztalati pontot
+- helytelenül megoldott feladatért vonjon le tapasztalati pontot a játékostól
+- bizonyos számú tapasztalati pont után lépjen szintet a játékos
+- szintlépés után nõjön a felvillanó négyzetek száma
+- szintlépés után nõjön a négyzetek felvillanásának gyorsasága
 
 4. Jelenlegi üzleti folyamatok modellje
 
