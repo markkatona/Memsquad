@@ -8,6 +8,12 @@ Követelményspecifikáció
 2. Jelenlegi helyzet
 
 3. Vágyálom rendszer
+- a terv egy memóriajáték készítése
+- a játék valóban fejlessze a játékos memóriáját
+- egy táblajáték formájában jelenjen meg az alkalmazás
+- a tábla négyzet alakú legyen és legyen felosztva 6x6 darab kisebb négyzetre
+- a tábla négyzetei közül néhány villanjon fel, egyenként, sorrendben
+- a sorrendben felvillant négyzetekre a játékosnak ugyan ilyen sorrendben kelljen rákattintania
 
 4. Jelenlegi üzleti folyamatok modellje
 
