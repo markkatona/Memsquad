@@ -10,8 +10,12 @@ Követelményspecifikáció
 	Jelenleg az ehhez hasonló kisérletek végrehajtása nagyon körülményes, mivel különbözõ idejétmúlt tesztek segítségével mérjük fel a tanulók memóriakapacitását. A teszteket pedig egyesével át kell nézni és összegezni az eredményt, ez a folyamat nagyon lassú és körülményes. A legnyagyobb hátrány pedig abból származik, hogy a fiatalok elveszítik az érdeklodést a kísérlettel kapcsolatban, mert ugyanúgy papíron töltik ki a tesztet, mint bármely más írásbeli dolgozatot. Egy másik hátrányt pedig az képez, hogy mivel nem digitális módon történik a teszt kitöltése, gondoskodnunk kell róla, hogy az iskolákhoz eljussanak ezek a tesztek valamint, hogy a kitöltött példányok visszakerüljenek hozzánk, hogy elvégezzük az eredmények elemzését.
 
 3. Vágyálom rendszer
-- a terv egy memóriajáték készítése
-- a játék valóban fejlessze a játékos memóriáját
+- a terv egy memóriajáték alkalmazás készítése
+- az alkalmazás valóban fejlessze a játékos memóriáját
+- adjon visszajelzést valami módon a játékos memória kapacitásáról
+- a memória kapacitást az alapján számítsa ki, hogy a játékos
+mennyi idõ alatt mennyi tapasztalati pontot szerez, illetve milyen szintet
+képes adott idõkorlát alatt elérni
 - egy táblajáték formájában jelenjen meg az alkalmazás
 - a tábla négyzet alakú legyen és legyen felosztva 6x6 darab kisebb négyzetre
 - a tábla négyzetei közül néhány villanjon fel, egyenként, sorrendben
@@ -21,6 +25,7 @@ Követelményspecifikáció
 - bizonyos számú tapasztalati pont után lépjen szintet a játékos
 - szintlépés után nõjön a felvillanó négyzetek száma
 - szintlépés után nõjön a négyzetek felvillanásának gyorsasága
+- az alkalmazás valóban egy szórakoztató játék legyen, a játékos ne érezze ezt másképp
 
 4. Jelenlegi üzleti folyamatok modellje
 
