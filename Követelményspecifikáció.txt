@@ -29,6 +29,29 @@ képes adott idõkorlát alatt elérni
 
 4. Jelenlegi üzleti folyamatok modellje
 
+->Üzleti szereplõ és munkatárs elemzés:
+	-Üzleti szereplõ:
+		-Tanárok
+		-Iskolai alkalmazottak
+		-Diákok akik kitöltik a tesztet
+	-Üzleti munkatárs:
+		- Vezetõ
+		- HR munkatárs
+		- Elemzo statisztikus
+->Üzleti folyamat elemzés:
+	- Szolgáltatás
+	- Népszerusítés
+	- Könyvelés
+	- Tesztek kinyomtatása
+	- Adatelemzés
+	- Hagyományos papir alapú teszt megíratása
+->Üzleti entitás elemzés:
+	- Iroda
+	- Reklám
+	- Memóriatesztek
+->Üzleti folyamatok modellezése:
+	- a diák elmegy az iskolába -> több órát tanulnak és elfáradnak -> kitöltik a tesztet -> az eredmények összesítése-> a megszületett eredmények nem tükrözik a valóságot -> a kísérlet eredménye nem teljesen megbízható
+
 5. Igényelt üzleti folymatok modellje
 
 -Üzleti szereplõ és munkatárs elemzés:
