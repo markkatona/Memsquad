@@ -4,6 +4,16 @@ Követelményspecifikáció
 
 
 1. Bevezetés
+	Az évek során sok kísérletet hajtottak végre különbözo cégek, arra hogy
+tanulmányozzák a fiatalok memóriájának fejlodését és hogy melyek a leheto
+leghatékonyabb módok a memória kapacitás fejlesztésére.
+A vállalatunk 2015 óta végez kutatásokat ebben a témakörben. Az alkalmazás
+amelyre igényt tartunk, egy olyan alkalmazás, amely segítségével játékos
+módon tudjuk felmérni, illetve fejleszteni a diákok memória kapacitását.
+Vállalatunk elonyben részesíti az innovatív megoldásokat, ezért az
+alkalmazásnak érdekesnek és modernnek kell lennie, hogy lekösse a fiatalok
+figyelmét és, hogy ne csak kényszerbol végezzék el a tesztet,
+mert akkor nem tudnánk meg a valós eredményeket.
 
 2. Jelenlegi helyzet
 
