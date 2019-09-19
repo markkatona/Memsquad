@@ -5,7 +5,7 @@ Követelményspecifikáció
 
 1. Bevezetés
 	Az évek során sok kísérletet hajtottak végre különbözo cégek, arra hogy
-tanulmányozzák a fiatalok memóriájának fejlodését és hogy melyek a leheto
+tanulmányozzák a fiatalok memóriájának fejlõdését és hogy melyek a leheto
 leghatékonyabb módok a memória kapacitás fejlesztésére.
 A vállalatunk 2015 óta végez kutatásokat ebben a témakörben. Az alkalmazás
 amelyre igényt tartunk, egy olyan alkalmazás, amely segítségével játékos
@@ -13,9 +13,19 @@ módon tudjuk felmérni, illetve fejleszteni a diákok memória kapacitását.
 Vállalatunk elonyben részesíti az innovatív megoldásokat, ezért az
 alkalmazásnak érdekesnek és modernnek kell lennie, hogy lekösse a fiatalok
 figyelmét és, hogy ne csak kényszerbol végezzék el a tesztet,
-mert akkor nem tudnánk meg a valós eredményeket.
+mert akkor nem tudnánk meg a valós eredményeket. 
 
 2. Jelenlegi helyzet
+	Jelenleg az ehhez hasonló kisérletek végrehajtása nagyon körülményes,
+mivel különbözõ idejétmúlt tesztek segítségével mérjük fel a tanulók memóriakapacitását.
+A teszteket pedig egyesével át kell nézni és összegezni az eredményt,
+ez a folyamat nagyon lassú és körülményes. A legnyagyobb hátrány pedig
+abból származik, hogy a fiatalok elveszítik az érdeklodést a kísérlettel
+kapcsolatban, mert ugyanúgy papíron töltik ki a tesztet, mint bármely
+más írásbeli dolgozatot. Egy másik hátrányt pedig az képez, hogy mivel
+nem digitális módon történik a teszt kitöltése, gondoskodnunk kell róla,
+hogy az iskolákhoz eljussanak ezek a tesztek valamint, hogy a kitöltött
+példányok visszakerüljenek hozzánk, hogy elvégezzük az eredmények elemzését.
 
 3. Vágyálom rendszer
 - a terv egy memóriajáték készítése
