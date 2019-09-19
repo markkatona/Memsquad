@@ -23,3 +23,28 @@ Követelményspecifikáció
 4. Jelenlegi üzleti folyamatok modellje
 
 5. Igényelt üzleti folymatok modellje
+
+-Üzleti szereplõ és munkatárs elemzés:
+	-Üzleti szereplõ:
+		- Tanárok
+		- Iskolai alkalmazottak
+		- Diákok
+		- Önkéntesek
+	-Üzleti munkatárs:
+		- Rendszergazda
+		- Vezetõ
+		- HR munkatárs
+-Üzleti folyamat elemzés:
+	- Reklámozás
+	- Szolgáltatás
+	- Könyvelés
+	- Adatelemzés
+	- Kényelmes használat
+	- Alkalmazás használata
+	- Statisztika
+-Üzleti entitás elemzés:
+	- Emberi memória
+	- Emberi koncentrációképesség
+	- Reakcióidõ
+-Üzleti folyamatok modellezése:
+	hazamegy a diák -> kényelembe helyezi magát -> leül játszani az appal -> megcsinálja a tesztet -> folytatja a hétköznapját
