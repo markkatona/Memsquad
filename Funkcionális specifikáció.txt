@@ -32,6 +32,32 @@ Funkcionális specifikáció
 
 4. Jelenlegi üzleti folyamatok modellje
 
+A rendszer segítségével le szeretnénk venni a tanárok válláról azt a terhet ami a különbözo tesztek elkészítésével és feldolgozásával jár.
+
+->Üzleti szereplõ és munkatárs elemzés:
+	-Üzleti szereplõ:
+		-Tanárok, akik szólnak a diákoknak a teszt létezésérol
+		-Iskolai alkalmazottak, akik adott esetben segítenek a diákoknak
+		-Diákok akik kitöltik a tesztet
+	-Üzleti munkatárs:
+		- Vezetõ
+		- HR munkatárs
+		- Elemzo statisztikus
+->Üzleti folyamat elemzés:
+	- Szolgáltatás : a tanárok állítják elo
+	- Népszerusítés: a tanárok által
+	- Könyvelés: iskolai alkalmazottakkal
+	- Tesztek kinyomtatása: iskolai alkalmazottak segítségével
+	- Adatelemzés: a tanárok által
+	- Hagyományos papir alapú teszt megíratása: ez nagyon idoígényes
+->Üzleti entitás elemzés:
+	- Iroda az iskola
+	- Reklám a tanárok által
+	- Memóriatesztek amit a tanároknak kell elkészíteni
+->Üzleti folyamatok modellezése:
+	- a tanár szól a diákoknak a teszt létezésérol -> a diákok kitöltik a tesztet miután több nehéz,fárasztó órájuk volt -> a tanár az eredményeket összesítí -> a megszületett eredmények nem tükrözik a valóságot mivel a diák már fáradt volt -> a kísérlet eredménye nem teljesen megbízható
+
+
 5. Igényelt üzleti folyamatok modellje
 A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen memóriakapacitással rendelkezik egy egyszeru játék segítségével.
 ->Üzleti szereplõ és munkatárs elemzés:
