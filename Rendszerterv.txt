@@ -6,7 +6,10 @@ Rendszerterv
 ----------------------------------------------------
 
 ----------------------------------------------------
-
+A program tesztelésének tervezése:
+	Mind a program készítõk mind pedig a megrendelõk egyik legnagyobb félelme, ha a megrendelt program tele van bug-okkal, ami nem csak a felhasználói élményt ronthatja el, hanem akár üzleti károkat is okozhat, valamint akár törvényi rendeleteket is megszeghet, ami bírósági pereket is vezethet maga után. Ezért maga a program tesztelése számos tényezõt kell figyelembe vegyen. 
+	A program csak akkor léphet a következõ fázisba, ha minden teszteset sekeresen végbemegy, és a helyes eredményt adja vissza. A játékos elsõ lépésben meg kell adja az adatait ami segitségével a rendszer be tudja azonosítani, és ez által meg tudja különböztetni a többi felhasználótól. Ezeket az adatokat a rendszer egy adatbázisban menti le és ezért fontos, hogy az adatok helyesek legyenek. A rendszer nem engedheti meg például, hogy a felhasználó neve szám legyen, vagy akár ne írjon egyáltalán nevet. A felhasználó a saját életkorát csak számként tudja megadni valamint mikor a nemét tölti ki szintén csak szöveget használhat valamint mindegyiket meg kell adja. Annak érdekében, hogy ezek a hibák ne fordulhassanak elõ a programnak tesztek sorozatán kell keresztülmennie. Ezeket a teszteket a junit keretrendszer segitségével valósítjuk meg, mely lehetõvé teszi, hogy teszteket írjunk annak érdekében, hogy lefedjük az összes lehetséges esetet, ami elõfordulhat a program futása közben. 
+	A junit 5 segitségével le kell tesztelnünk, hogy a program hogyan reagál például, ha helytelenül töltjük ki az alapadatainkat, vagy például ha rákatintunk az egyik négyzetre. A programnak reagálnia kell a lehetõ legtöbb esetre, és semmilyen esetben se szabad helytelenül leállnia, vagy hibás adatokat felvinnie az adatbázisba.
 ----------------------------------------------------
 
 ----------------------------------------------------
