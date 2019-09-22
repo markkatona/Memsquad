@@ -9,6 +9,20 @@ Funkcionális specifikáció
 
 3. Vágyálom rendszer
 
+- beveztés: az igénynek megfelelõen egy olyan alkalmazást tervezünk, ami fejleszti a játékos memóriáját
+- kinézet: - az alkalmazás egy táblajáték formájában fog megjelenni, a tábla kisebb négyzetekre lesz felosztva
+	- négyzet alakú tábla, ami további 6x6 kisebb négyzetre van felosztva
+- játékmenet: - a játékos rányom a játék indítása gombra, ennek következtében elindul a játék
+	- sorban "felvillan" (más színt nyer) néhány négyzet
+	- a játékos megjegyzi, hogy melyik négyzet villant fel, valamint ennek a sorrendjét
+	- a játékos megpróbál ugyan olyan sorrendben, azokra a négyzetekre kattintani, amit látott
+	- ha jól teljesít a játékos növekszik tapasztalati pontja, ha rosszul, csökken
+	- bizonyos tapasztalati pont után a játékos szintet lép
+	- a szintlépés növeli a játékonként felvillanó négyezek számát, valamint a felvillanás sebességét
+- konklúzió : - a játékos saját képességeihez mérten fog teljesíteni,
+	ezért bizonyos szint után nem tud több tapasztalati pontot gyûjteni
+ 	- a játékos által elért szint tükrözi a memória kapacitását
+
 4. Jelenlegi üzleti folyamatok modellje
 
 5. Igényelt üzleti folyamatok modellje
