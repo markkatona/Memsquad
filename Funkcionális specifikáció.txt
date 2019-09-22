@@ -4,6 +4,11 @@ Funkcionális specifikáció
 
 
 1. Bevezetés
+	Cégünk sok féle témakörben tervezett, és adott ki játékokat az elmúlt évtizedben telefonos valamint számítógépes platformra. Mindazonáltal a legtöbb alkalmazásunkat logikai/memória témakörben fejlesztettük. Úgy gondoljuk, elegendõ tapasztalattal rendelkezdik vállalatunk, hogy az igényüknek megfelelõ játékot tervezzük. Az igénynek megfelelõen képesek vagyunk olyan színes és szórakoztató játékot fejleszteni, amit az emberek szórakozás céljából használnak, ezzel párhuzamban pedig a játékosok memória kapacitását is fel tudjuk mérni megfelelõ rendszer tervezésével. Továbbá cégünk fenntarja annak a lehezõségét, hogy az igénylõ teljes mértékben saját maga specifikálja az igénylet alkalmazást, és csapatunk ennek megfelelõen fogja végezni a fejlesztést.
+
+
+
+
 
 2. Jelenlegi helyzet
 
