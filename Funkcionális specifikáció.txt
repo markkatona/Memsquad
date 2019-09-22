@@ -11,4 +11,34 @@ Funkcionális specifikáció
 
 4. Jelenlegi üzleti folyamatok modellje
 
-5. Igényelt üzleti folymatok modellje
+5. Igényelt üzleti folyamatok modellje
+A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen memóriakapacitással rendelkezik egy egyszeru játék segítségével.
+->Üzleti szereplõ és munkatárs elemzés:
+	-Üzleti szereplõk elemzése:
+		- A rendszerrel kapcsolatba kerülnek a következo szereplok:
+			- fejlesztok, akik elkészítik az alkalmazást
+			- önkéntesek, akik kitöltik a tesztet
+			- statisztikusok, akik elemzik a memóriateszt eredményeit
+			- adatbázis kezelok, akik felelnek az adatok rendeltetésszeru tárolásáért
+	-Üzleti munkatárs:
+		- Vezetõ
+		- Rendszergazda
+		- Könyvelo
+		- HR munkatárs
+		- PR munkatárs, aki jó kommunikációs képességekkel rendelkezik és népszerusíti az alkalamazást a megfelelo platformokon
+		- Tesztelok, akik felelnek az alkalmazás helyes muködéséért
+->Üzleti folyamat elemzés:
+	- Reklámozás, a csapat PR részlegének feladata
+	- Szolgáltatás, a fejlesztok feladata
+	- Könyvelés, a cég könyvelojének feladata 
+	- Adatelemzés, alkalmazás által végzett, automatizált folyamat
+	- Alkalmazás használata, a teszt kitöltoinek feladata
+	- Statisztika számítása, egy megbízott külso statisztikus feladata
+	- Fejlesztés, a cég megbízza a fejlesztésért felelos csapatot az alkalmazás elkészítésére, minden információt megoszt a fejleszto csapattal a cég, hogy a végtermék a leheto legjobban megfeleljen az igényeiknek
+->Üzleti entitás elemzés:
+	- Iroda
+	- Weboldal, a népszerusítés és információ megosztás céljából
+	- Reklám, hogy minél többen értesüljenek az alkalmazás létezésérol
+->Üzleti folyamatok modellezése és használati esetek modellje(UML diagramm formájában is megtekintheto):
+	A teszt kitöltoje értesül a játék létezésérol -> ha érdekesnek találja az ötletet elkezd játszani a játékkal -> ha élvezi a játékot, akkor végig is játsza -> a játék végén megtudja az eredményét -> folytatja a napját.
+	Az alkalmazásról készült néhány design terv, azok az információk alapján amelyek a követelményspecifikációban szerepeltek. Ezeken természetesen még lehet változtatni, mivel a kész alkalmazás fejlesztése még nem kezdodött el.
