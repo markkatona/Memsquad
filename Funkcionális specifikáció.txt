@@ -5,31 +5,65 @@ Funkcionális specifikáció
 
 1. Bevezetés
 
-	Cégünk sok féle témakörben tervezett, és adott ki játékokat az elmúlt évtizedben telefonos valamint számítógépes platformra. Mindazonáltal a legtöbb alkalmazásunkat logikai/memória témakörben fejlesztettük. Úgy gondoljuk, elegendõ tapasztalattal rendelkezdik vállalatunk, hogy az igényüknek megfelelõ játékot tervezzük. Az igénynek megfelelõen képesek vagyunk olyan színes és szórakoztató játékot fejleszteni, amit az emberek szórakozás céljából használnak, ezzel párhuzamban pedig a játékosok memória kapacitását is fel tudjuk mérni megfelelõ rendszer tervezésével. Továbbá cégünk fenntarja annak a lehezõségét, hogy az igénylõ teljes mértékben saját maga specifikálja az igénylet alkalmazást, és csapatunk ennek megfelelõen fogja végezni a fejlesztést.
+	Cégünk sok féle témakörben tervezett, és adott ki játékokat az elmúlt
+évtizedben telefonos valamint számítógépes platformra. Mindazonáltal a
+legtöbb alkalmazásunkat logikai/memória témakörben fejlesztettük. Úgy
+gondoljuk, elegendõ tapasztalattal rendelkezdik vállalatunk, hogy az
+igényüknek megfelelõ játékot tervezzük. Az igénynek megfelelõen képesek
+vagyunk olyan színes és szórakoztató játékot fejleszteni, amit az emberek
+szórakozás céljából használnak, ezzel párhuzamban pedig a játékosok
+memória kapacitását is fel tudjuk mérni megfelelõ rendszer tervezésével.
+Továbbá cégünk fenntarja annak a lehezõségét, hogy az igénylõ teljes
+mértékben saját maga specifikálja az igénylet alkalmazást, és csapatunk
+ennek megfelelõen fogja végezni a fejlesztést.
 
 2. Jelenlegi helyzet
 
-	Ezen kísérletek lebonyolítása jelen esetben nagyon körülményes, a papír és a toll alapú tesztek ideje lejárt, valamit a jelen modern korban számos egyéb lehetõség van a fiatalok valamint más érdeklõdõk memóriájának felmérésére. A papír alapú tesztek egyik legnagyobb hátránya, hogy a javításuk is papíron történik. A papír alapú javításnak számos hátránya van, ez egyik ilyen a lassúság, ennek egyensúlyozása érdekében több humán erõforrást kell belefektetni a tesztek kijavítása érdekében, hogy idõben elkészüljenek, viszont a legnagyobb gyengesége mégis maga a hibázás, ami akár hibás eredményeket is létrehozhat, ami hibás következtetésekhez vezethet. A papír alapú tesztek egyik másik nagy hátránya, hogy nagy mennyiségû papírt emésztenek fel, ami azon felül, hogy nagy mennyiségü anyagi kárhoz vezet, még a természet kárára is válik, mivel számos erdõt irtanak ki az iskolák papír alapú vizsgáztatása érdekébe. Valamint egy másik hátránya a papír alapú vizsgáztatásnak maga a sok papír által létrejövõ számos adminisztrációs probléma. Végül pedig a tesztek legnagyobb hátránya, hogy egy fiatal se szívesen tölti ki, viszont egy játékkal mindenki szívesebben játszik.
+	Ezen kísérletek lebonyolítása jelen esetben nagyon körülményes, a papír
+és a toll alapú tesztek ideje lejárt, valamit a jelen modern korban
+számos egyéb lehetõség van a fiatalok valamint más érdeklõdõk memóriájának
+felmérésére. A papír alapú tesztek egyik legnagyobb hátránya, hogy a
+javításuk is papíron történik. A papír alapú javításnak számos hátránya van,
+ez egyik ilyen a lassúság, ennek egyensúlyozása érdekében több humán
+erõforrást kell belefektetni a tesztek kijavítása érdekében, hogy idõben
+elkészüljenek, viszont a legnagyobb gyengesége mégis maga a hibázás,
+ami akár hibás eredményeket is létrehozhat, ami hibás következtetésekhez
+vezethet. A papír alapú tesztek egyik másik nagy hátránya, hogy nagy
+mennyiségû papírt emésztenek fel, ami azon felül, hogy nagy mennyiségü
+anyagi kárhoz vezet, még a természet kárára is válik, mivel számos erdõt
+irtanak ki az iskolák papír alapú vizsgáztatása érdekébe. Valamint egy
+másik hátránya a papír alapú vizsgáztatásnak maga a sok papír által
+létrejövõ számos adminisztrációs probléma. Végül pedig a tesztek legnagyobb
+hátránya, hogy egy fiatal se szívesen tölti ki, viszont egy játékkal
+mindenki szívesebben játszik.
 
 3. Vágyálom rendszer
 
-- beveztés: az igénynek megfelelõen egy olyan alkalmazást tervezünk, ami fejleszti a játékos memóriáját
-- kinézet: - az alkalmazás egy táblajáték formájában fog megjelenni, a tábla kisebb négyzetekre lesz felosztva
+- beveztés: az igénynek megfelelõen egy olyan alkalmazást tervezünk,
+ami fejleszti a játékos memóriáját
+- kinézet: - az alkalmazás egy táblajáték formájában fog megjelenni,
+a tábla kisebb négyzetekre lesz felosztva
 	- négyzet alakú tábla, ami további 6x6 kisebb négyzetre van felosztva
-- játékmenet: - a játékos rányom a játék indítása gombra, ennek következtében elindul a játék
+- játékmenet: - a játékos rányom a játék indítása gombra, ennek következtében
+elindul a játék
 	- sorban "felvillan" (más színt nyer) néhány négyzet
-	- a játékos megjegyzi, hogy melyik négyzet villant fel, valamint ennek a sorrendjét
-	- a játékos megpróbál ugyan olyan sorrendben, azokra a négyzetekre kattintani, amit látott
-	- ha jól teljesít a játékos növekszik tapasztalati pontja, ha rosszul, csökken
+	- a játékos megjegyzi, hogy melyik négyzet villant fel, valamint ennek
+a sorrendjét
+	- a játékos megpróbál ugyan olyan sorrendben, azokra a négyzetekre
+kattintani, amit látott
+	- ha jól teljesít a játékos növekszik tapasztalati pontja, ha rosszul,
+csökken
 	- bizonyos tapasztalati pont után a játékos szintet lép
-	- a szintlépés növeli a játékonként felvillanó négyezek számát, valamint a felvillanás sebességét
+	- a szintlépés növeli a játékonként felvillanó négyezek számát, valamint
+a felvillanás sebességét
 - konklúzió : - a játékos saját képességeihez mérten fog teljesíteni,
 	ezért bizonyos szint után nem tud több tapasztalati pontot gyûjteni
  	- a játékos által elért szint tükrözi a memória kapacitását
 
 4. Jelenlegi üzleti folyamatok modellje
 
-A rendszer segítségével le szeretnénk venni a tanárok válláról azt a terhet ami a különbözo tesztek elkészítésével és feldolgozásával jár.
+A rendszer segítségével le szeretnénk venni a tanárok válláról azt a
+terhet ami a különbözo tesztek elkészítésével és feldolgozásával jár.
 
 ->Üzleti szereplõ és munkatárs elemzés:
 	-Üzleti szereplõ:
@@ -52,12 +86,16 @@ A rendszer segítségével le szeretnénk venni a tanárok válláról azt a terhet ami 
 	- Reklám a tanárok által
 	- Memóriatesztek amit a tanároknak kell elkészíteni
 ->Üzleti folyamatok modellezése:
-	- a tanár szól a diákoknak a teszt létezésérol -> a diákok kitöltik a tesztet miután több nehéz,fárasztó órájuk volt -> a tanár az eredményeket összesítí -> a megszületett eredmények nem tükrözik a valóságot mivel a diák már fáradt volt -> a kísérlet eredménye nem teljesen megbízható
+	- a tanár szól a diákoknak a teszt létezésérol -> a diákok kitöltik a
+tesztet miután több nehéz,fárasztó órájuk volt -> a tanár az eredményeket
+összesítí -> a megszületett eredmények nem tükrözik a valóságot mivel a
+diák már fáradt volt -> a kísérlet eredménye nem teljesen megbízható
 
 
 5. Igényelt üzleti folyamatok modellje
 
-A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen memóriakapacitással rendelkezik egy egyszeru játék segítségével.
+A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen
+memóriakapacitással rendelkezik egy egyszeru játék segítségével.
 ->Üzleti szereplõ és munkatárs elemzés:
 	-Üzleti szereplõk elemzése:
 		- A rendszerrel kapcsolatba kerülnek a következo szereplok:
@@ -70,7 +108,8 @@ A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen memór
 		- Rendszergazda
 		- Könyvelo
 		- HR munkatárs
-		- PR munkatárs, aki jó kommunikációs képességekkel rendelkezik és népszerusíti az alkalamazást a megfelelo platformokon
+		- PR munkatárs, aki jó kommunikációs képességekkel rendelkezik és
+népszerusíti az alkalamazást a megfelelo platformokon
 		- Tesztelok, akik felelnek az alkalmazás helyes muködéséért
 ->Üzleti folyamat elemzés:
 	- Reklámozás, a csapat PR részlegének feladata
@@ -79,11 +118,18 @@ A rendszer célja, hogy meg tudja állapítani azt, hogy a felhasználó milyen memór
 	- Adatelemzés, alkalmazás által végzett, automatizált folyamat
 	- Alkalmazás használata, a teszt kitöltoinek feladata
 	- Statisztika számítása, egy megbízott külso statisztikus feladata
-	- Fejlesztés, a cég megbízza a fejlesztésért felelos csapatot az alkalmazás elkészítésére, minden információt megoszt a fejleszto csapattal a cég, hogy a végtermék a leheto legjobban megfeleljen az igényeiknek
+	- Fejlesztés, a cég megbízza a fejlesztésért felelos csapatot az alkalmazás
+elkészítésére, minden információt megoszt a fejleszto csapattal a cég,
+hogy a végtermék a leheto legjobban megfeleljen az igényeiknek
 ->Üzleti entitás elemzés:
 	- Iroda
 	- Weboldal, a népszerusítés és információ megosztás céljából
 	- Reklám, hogy minél többen értesüljenek az alkalmazás létezésérol
-->Üzleti folyamatok modellezése és használati esetek modellje(UML diagramm formájában is megtekintheto):
-	A teszt kitöltoje értesül a játék létezésérol -> ha érdekesnek találja az ötletet elkezd játszani a játékkal -> ha élvezi a játékot, akkor végig is játsza -> a játék végén megtudja az eredményét -> folytatja a napját.
-	Az alkalmazásról készült néhány design terv, azok az információk alapján amelyek a követelményspecifikációban szerepeltek. Ezeken természetesen még lehet változtatni, mivel a kész alkalmazás fejlesztése még nem kezdodött el.
+->Üzleti folyamatok modellezése és használati esetek modellje(UML diagramm
+formájában is megtekintheto):
+	A teszt kitöltoje értesül a játék létezésérol -> ha érdekesnek találja
+az ötletet elkezd játszani a játékkal -> ha élvezi a játékot, akkor végig
+is játsza -> a játék végén megtudja az eredményét -> folytatja a napját.
+	Az alkalmazásról készült néhány design terv, azok az információk alapján
+amelyek a követelményspecifikációban szerepeltek. Ezeken természetesen még
+lehet változtatni, mivel a kész alkalmazás fejlesztése még nem kezdodött el.
