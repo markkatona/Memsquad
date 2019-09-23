@@ -2,41 +2,192 @@ Memóriajáték projekt
 Rendszerterv
 
 ----------------------------------------------------
-A rendszerrol általánosan, jogosultságok, adatbázis táblaszerkezete és adatbáziskezelés:
-	A rendszer egy olyan alkalmazást foglal magába jelen esetben, amely egy memóriateszt viszont játékos formában van megvalósítva, azért, hogy élvezheto legyen. 
-	A rendszer célja, hogy meg tudja állapítani egy egyszeru játék alapján a felhasználó memória kapacitását. Továbbá fontosnak tartjuk, hogy a játék élvezetes legyen és lekösse a felhasználó figyelmét, azért, hogy a leheto legjobb eredményt érje el és ehhez motiváltnak kell lennie.
-	Az alkalmazás célközönségének elsosorban a fiatalokat tartjuk, mivel ebben a korban figyelheto meg leginkább a memóriakapacitás fejlodése. Ennek megfeleloen a felületet a leheto legegyszerubbre tervezzük, hogy még véletlenül se okozzon félreértést és ne vonja el a teszt kitöltojének figyelmét a játék lényegérol, azaz, hogy megfeleloen koncentrált maradjon a teszt kitöltésének legvégéig.Az alkalmazás várható megjelenésérol készültek képernyoképek, tehát a végso alkalamazás ennek megfeleloen fog megjelenni a fejleszés után.A fent említett memóriajáték fejlesztését valamint tesztelését egy négy fos csapat végzi.
-	Az alkalmazás elkészítéséért felelos csapatnak 1 hete lesz lefejleszteni az alkalmazást és tesztelni, hogy helyesen muködjön.
-	Az projektben a következo üzleti szerepkörök vesznek rész, és ezekkel a jogosultságokkal fognak rendelkezni:
--Vezeto, minden jogosultsággal rendelkezik, azaz: irási,olvasási és vegrehajtási jogokkal, továbbá az o elképzeléseinek megfeleloen zajlik le az alkalmazás tervezése, fejlesztése, illetve miután elkészült az alkalmazás a felhasználási módokról is O hozza meg a végso döntést
--Rendszergazda, szintén minden jogosultsággal rendszer felett, irási, olvasási és végrehajtási jogokkal is rendelkezni kell, mivel feladatai közé tartozik a hozzáférések kezelése és a rendszere biztonságos muködése, az ilyen hatásköru feladatokat pedig csak akkor tudja elvégezni, ha a teljes informatikai hálózathoz hozzáfér és karbantartja azt
--Könyvelo, olvasasi jogokkal rendelkezik, feladatainak megfeleloen hozzáfér az adatokhoz, de változtatni és kitörölni nem tudja azokat, feladatai köté tartozik, hogy a cég a törvénynek megfeleloen muködjön és, ha szabályztalanságot vagy törvénytelenséget tapasztal a cég muködésében kötelessége figyelmeztetni a cégvezetojét
--HR munkatárs, olvasási jogokkal rendelkezik, fo feladatai közé tartozik az, hogy egyeztet a partnerekkel és hozzáférése van a cég belso és külso adatbázisaihoz is, meghírdeti az új nyitott poziciókat a cégnél és részt vesz az interjúztatási folyamatban is
--PR munkatárs, szintén csak olvasási jogokkal rendelkezik, legfontosabb feladata a cég népszerusítése valamint, hogy képviselje a céget a különbözo közösségi platformokon
--Tesztelok, végrehajtási joggal rendelkeznek, fobb feladataik közé tartozik, hogy az alkalmazást a leheto legtöbb módon próbálják ki, és ha bármilyen rendellenességet fedeznek fel a program futásában értesítsék a fejleszto csapatot, hogy minél elobb javításra kerüljön a hiba 
--Statisztikusok, csak olvasási joggal rendelkeznek, számukra a legfontosabb tényezo az, hogy megkapják a memóriateszt során keletkezo adatokat és azok elemzésével statisztikát számolnak, amely során kiderül többek között az hogy a különbözo korosztályok milyen memóriakapacitással rendelkeznek
-	Az alkalmazás során nagyon fontos szerepet játszanak azok a statisztikai adatok, amelyek a játék elvégzésével kerülnek feldolgozásra. Ahhoz, hogy adatelemzésre alkalmasak legyenek az adatok valamilyen formában el kell mentenünk ezeket az adatokat. Az adatbázis táblaszerkezetének megtervezése során a legfontosabb tényezo az volt, hogy az adatok tárolása logikusan történjen és a leheto leghatékonyabb módon. Az általunk használt adatbázist egy MySQL szerver biztosítja, a táblaszerkezete pedig megtekintheto egy ábra formájában. A felhasználó adatai egy táblába kerülnek mentésre miután a játék kezdetén megadják a következo személyes adatokat: név, kor és nem, a kitöltés ideje automatikus bekerül az adatbázisba. A további adatok a játék során keletkeznek és a teszt kitöltése után kerülnek mentésre, ezek lesznek a legfontossabb statisztikai adatok: tapasztalati szint, jatékido és talalati arány. A két tábla összekötésére pedig egy egyedi azonosítót használunk.
+A rendszerrol általánosan, jogosultságok, adatbázis táblaszerkezete és
+adatbáziskezelés:
+	A rendszer egy olyan alkalmazást foglal magába jelen esetben, amely
+egy memóriateszt viszont játékos formában van megvalósítva, azért, hogy
+élvezheto legyen. 
+	A rendszer célja, hogy meg tudja állapítani egy egyszeru játék alapján
+a felhasználó memória kapacitását. Továbbá fontosnak tartjuk, hogy a játék
+élvezetes legyen és lekösse a felhasználó figyelmét, azért, hogy a leheto
+legjobb eredményt érje el és ehhez motiváltnak kell lennie.
+	Az alkalmazás célközönségének elsosorban a fiatalokat tartjuk, mivel
+ebben a korban figyelheto meg leginkább a memóriakapacitás fejlodése.
+Ennek megfeleloen a felületet a leheto legegyszerubbre tervezzük, hogy
+még véletlenül se okozzon félreértést és ne vonja el a teszt kitöltojének
+figyelmét a játék lényegérol, azaz, hogy megfeleloen koncentrált maradjon
+a teszt kitöltésének legvégéig.Az alkalmazás várható megjelenésérol
+készültek képernyoképek, tehát a végso alkalamazás ennek megfeleloen fog
+megjelenni a fejleszés után.A fent említett memóriajáték fejlesztését
+valamint tesztelését egy négy fos csapat végzi.
+	Az alkalmazás elkészítéséért felelos csapatnak 1 hete lesz lefejleszteni
+az alkalmazást és tesztelni, hogy helyesen muködjön.
+	Az projektben a következo üzleti szerepkörök vesznek rész, és ezekkel
+a jogosultságokkal fognak rendelkezni:
+-Vezeto, minden jogosultsággal rendelkezik, azaz: irási,olvasási és 
+végrehajtási jogokkal, továbbá az o elképzeléseinek megfeleloen zajlik
+le az alkalmazás tervezése, fejlesztése, illetve miután elkészült az
+alkalmazás a felhasználási módokról is O hozza meg a végso döntést
+-Rendszergazda, szintén minden jogosultsággal rendszer felett, irási,
+olvasási és végrehajtási jogokkal is rendelkezni kell, mivel feladatai
+közé tartozik a hozzáférések kezelése és a rendszere biztonságos muködése,
+az ilyen hatásköru feladatokat pedig csak akkor tudja elvégezni, ha a
+teljes informatikai hálózathoz hozzáfér és karbantartja azt
+-Könyvelo, olvasasi jogokkal rendelkezik, feladatainak megfeleloen
+hozzáfér az adatokhoz, de változtatni és kitörölni nem tudja azokat,
+feladatai köté tartozik, hogy a cég a törvénynek megfeleloen muködjön és,
+ha szabályztalanságot vagy törvénytelenséget tapasztal a cég muködésében
+kötelessége figyelmeztetni a cégvezetojét
+-HR munkatárs, olvasási jogokkal rendelkezik, fo feladatai közé tartozik
+az, hogy egyeztet a partnerekkel és hozzáférése van a cég belso és külso
+adatbázisaihoz is, meghírdeti az új nyitott poziciókat a cégnél és részt
+vesz az interjúztatási folyamatban is
+-PR munkatárs, szintén csak olvasási jogokkal rendelkezik, legfontosabb
+feladata a cég népszerusítése valamint, hogy képviselje a céget a különbözo
+közösségi platformokon
+-Tesztelok, végrehajtási joggal rendelkeznek, fobb feladataik közé tartozik,
+hogy az alkalmazást a leheto legtöbb módon próbálják ki, és ha bármilyen
+rendellenességet fedeznek fel a program futásában értesítsék a fejleszto
+csapatot, hogy minél elobb javításra kerüljön a hiba 
+-Statisztikusok, csak olvasási joggal rendelkeznek, számukra a legfontosabb
+tényezo az, hogy megkapják a memóriateszt során keletkezo adatokat és
+azok elemzésével statisztikát számolnak, amely során kiderül többek között
+az hogy a különbözo korosztályok milyen memóriakapacitással rendelkeznek
+	Az alkalmazás során nagyon fontos szerepet játszanak azok a statisztikai
+adatok, amelyek a játék elvégzésével kerülnek feldolgozásra. Ahhoz, hogy
+adatelemzésre alkalmasak legyenek az adatok valamilyen formában el kell
+mentenünk ezeket az adatokat. Az adatbázis táblaszerkezetének megtervezése
+során a legfontosabb tényezo az volt, hogy az adatok tárolása logikusan
+történjen és a leheto leghatékonyabb módon. Az általunk használt adatbázist
+egy MySQL szerver biztosítja, a táblaszerkezete pedig megtekintheto egy
+ábra formájában. A felhasználó adatai egy táblába kerülnek mentésre miután
+a játék kezdetén megadják a következo személyes adatokat: név, kor és nem,
+a kitöltés ideje automatikus bekerül az adatbázisba. A további adatok a
+játék során keletkeznek és a teszt kitöltése után kerülnek mentésre, ezek
+lesznek a legfontossabb statisztikai adatok: tapasztalati szint, jatékido
+és talalati arány. A két tábla összekötésére pedig egy egyedi azonosítót
+használunk.
 ----------------------------------------------------
 
 A rendszer felépítése és mûködése:
-		Az alkalmazás két fõ részbõl tevõdik össze, a játék menüjébõl és a játékból. A játék menüje magában fogalja a játékos adatainak bekéréshez szükséges objektumokat, valamit a játék elindításához szükséges gombot. A játékostól alapvetõen három adatot kér be a rendszer, ezek pedig a játékos neve, életkora és a neme. Ezen fölül a háttérben a "játék indítása" gomb megnyomásának pillanatában a dátum is elmentésre kerül késõbbi használat céljából. Fontos megemlíteni, hogy a bekét adatok apaján a rendszer nem keres az adatbázisban egyezést, tehát minden játék indítások felvevésre kerül az adatbázisba egy rekord új egyedi id-vel.
-	Természetesen ez utóbbi csak akkor történik meg, ha a bekért adatok megfeleltek a követelményeknek. Abban az esetben, ha bármelyik bekért adat nem felel meg a követelménynek, a "játék indítása" gomb nem von maga után játék indítást. Ha a játékos által beírt adatok a kritériumoknak eleget tesznek a "játék indítása" gomb a következõket vonja maga után: elsõ sorban megtörténik a bekért adatoknak az elmentése és a dátum elmentése, ez után pedig elindul a játék. Az adatokat a rendszer egy MySQL szerverre tölti fel tárolás és késõbbi elemzés céljából. A játék elindulása a következõket jelenti: megjelenik a játék táblája, ami 6x6 darab négyzetet jelent, két másodperc elteltével pedig "felvillan" (színt vált) egymás után sorrendben néhány négyzet. A felvillanó négyzeteket a rendszer véletlenszerû szám generálással választja ki. Egy ciklusban készít egy véletlenszerû számot, ez után ennek a véletlenszerû számnak megfelelõ id-jú négyzetet megkeresi, majd ezt a négyzetet színezi be az alap színtõl eltérõ színûre. Ez a ciklus a játékos szintjének megfelelõen annál többször ismétlõdik, minél magasabb szintû a játékos. Kezdetben ez a szám három, tehát csak három négyzet villan fel. Minden két tökéletesen teljesített pálya esetén ez a szám nõ eggyel. A pálya akkor minõsül tökéletesen teljesítettnek, ha a játékos ugyan olyan sorrendben, ugyan azokra a négyzetekre kattint rá, amilyen sorrendben és amelyik négyzetek felvillantak. Tehát a négyzetek felvillanása után a játékos következik. Minden kattintás után a rendszer visszajelez, hogy a játékos jó négyzetbe kattintott-e vagy sem. Ha a játékos jó négyzetbe kattintott ez a négyzet zöld színre vált egy pillanatra, ellenkezõ esetben pedig piros színre vált. A pálya nem ér véget akkor, ha a játékos rossz négyzetbe kattint. A játékos a szintjét játék közben a 6x6 darab négyzet fölött tekintheti meg. 
-	Miután a játékos végzett a játékkal és kilép az alkalmazásból lementésre kerül az elért játékszint, a találati ráta valamit a játékkal eltöltött idõ. Ezek az adatok a játékos személyes adataival összekapcsolva kerülnek lementésre. Ezekbõl az adatokból késõbb éltkor vagy nem szerinti statisztika adatok nyerhetõek ki, illetve a olyan információ szûrhetõ le, hogy a nap melyik szakaszában teljesítenek jobban a játékosok.
+		Az alkalmazás két fõ részbõl tevõdik össze, a játék menüjébõl és a
+játékból. A játék menüje magában fogalja a játékos adatainak bekéréshez
+szükséges objektumokat, valamit a játék elindításához szükséges gombot.
+A játékostól alapvetõen három adatot kér be a rendszer, ezek pedig a
+játékos neve, életkora és a neme. Ezen fölül a háttérben a "játék indítása"
+gomb megnyomásának pillanatában a dátum is elmentésre kerül késõbbi használat
+céljából. Fontos megemlíteni, hogy a bekét adatok apaján a rendszer nem
+keres az adatbázisban egyezést, tehát minden játék indítások felvevésre
+kerül az adatbázisba egy rekord új egyedi id-vel.
+	Természetesen ez utóbbi csak akkor történik meg, ha a bekért adatok
+megfeleltek a követelményeknek. Abban az esetben, ha bármelyik bekért
+adat nem felel meg a követelménynek, a "játék indítása" gomb nem von maga
+után játék indítást. Ha a játékos által beírt adatok a kritériumoknak
+eleget tesznek a "játék indítása" gomb a következõket vonja maga után:
+elsõ sorban megtörténik a bekért adatoknak az elmentése és a dátum
+elmentése, ez után pedig elindul a játék. Az adatokat a rendszer egy
+MySQL szerverre tölti fel tárolás és késõbbi elemzés céljából. A játék
+elindulása a következõket jelenti: megjelenik a játék táblája, ami 6x6
+darab négyzetet jelent, két másodperc elteltével pedig "felvillan"
+(színt vált) egymás után sorrendben néhány négyzet. A felvillanó négyzeteket
+a rendszer véletlenszerû szám generálással választja ki. Egy ciklusban
+készít egy véletlenszerû számot, ez után ennek a véletlenszerû számnak
+megfelelõ id-jú négyzetet megkeresi, majd ezt a négyzetet színezi be az
+alap színtõl eltérõ színûre. Ez a ciklus a játékos szintjének megfelelõen
+annál többször ismétlõdik, minél magasabb szintû a játékos. Kezdetben ez
+a szám három, tehát csak három négyzet villan fel. Minden két tökéletesen
+teljesített pálya esetén ez a szám nõ eggyel. A pálya akkor minõsül
+tökéletesen teljesítettnek, ha a játékos ugyan olyan sorrendben, ugyan
+azokra a négyzetekre kattint rá, amilyen sorrendben és amelyik négyzetek
+felvillantak. Tehát a négyzetek felvillanása után a játékos következik.
+Minden kattintás után a rendszer visszajelez, hogy a játékos jó négyzetbe
+kattintott-e vagy sem. Ha a játékos jó négyzetbe kattintott ez a négyzet
+zöld színre vált egy pillanatra, ellenkezõ esetben pedig piros színre vált.
+A pálya nem ér véget akkor, ha a játékos rossz négyzetbe kattint. A játékos
+a szintjét játék közben a 6x6 darab négyzet fölött tekintheti meg. 
+	Miután a játékos végzett a játékkal és kilép az alkalmazásból
+lementésre kerül az elért játékszint, a találati ráta valamit a játékkal
+eltöltött idõ. Ezek az adatok a játékos személyes adataival összekapcsolva
+kerülnek lementésre. Ezekbõl az adatokból késõbb éltkor vagy nem szerinti
+statisztika adatok nyerhetõek ki, illetve a olyan információ szûrhetõ le,
+hogy a nap melyik szakaszában teljesítenek jobban a játékosok.
 ----------------------------------------------------
 A program tesztelésének tervezése:
-	Mind a program készítõk mind pedig a megrendelõk egyik legnagyobb félelme, ha a megrendelt program tele van bug-okkal, ami nem csak a felhasználói élményt ronthatja el, hanem akár üzleti károkat is okozhat, valamint akár törvényi rendeleteket is megszeghet, ami bírósági pereket is vezethet maga után. Ezért maga a program tesztelése számos tényezõt kell figyelembe vegyen. 
-	A program csak akkor léphet a következõ fázisba, ha minden teszteset sikeresen végbemegy, és a helyes eredményt adja vissza. A játékos elsõ lépésben meg kell adja az adatait ami segítségével a rendszer be tudja azonosítani, és ez által meg tudja különböztetni a többi felhasználótól. Ezeket az adatokat a rendszer egy adatbázisban menti le és ezért fontos, hogy az adatok helyesek legyenek. A rendszer nem engedheti meg például, hogy a felhasználó neve szám legyen, vagy akár ne írjon egyáltalán nevet. A felhasználó a saját életkorát csak számként tudja megadni valamint mikor a nemét tölti ki szintén csak szöveget használhat valamint mindegyiket meg kell adja. Annak érdekében, hogy ezek a hibák ne fordulhassanak elõ a programnak tesztek sorozatán kell keresztülmennie. Ezeket a teszteket a junit keretrendszer segítségével valósítjuk meg, mely lehetõvé teszi, hogy teszteket írjunk annak érdekében, hogy lefedjük az összes lehetséges esetet, ami elõfordulhat a program futása közben. 
-	A junit 5 segítségével le kell tesztelnünk, hogy a program hogyan reagál például, ha helytelenül töltjük ki az alapadatainkat, vagy például ha rákattintunk az egyik négyzetre. A programnak reagálnia kell a lehetõ legtöbb esetre, és semmilyen esetben se szabad helytelenül leállnia, vagy hibás adatokat felvinnie az adatbázisba.
-	A programot nem csak arra kell felkészíteni, hogyha helyes adatokat kap, akkor helyesen mûködik e, hanem arra is, hogyha helytelen adatot kap, akkor mit reagáljon rá. Az nem megfelelõ, ha például a felhasználó a nevébe véletlenül egy számot ír, és a program csak annyit csinál, hogy nem indítja el a tesztet. A felhasználó tudtára kell adni, hogy mit rontott el, annak érdekében, hogy a lehetõ legpontosabban, és leghamarabb ki tudja javítani a hibát, és el tudja kezdeni a tesztet. Ennek érdekében, ha rosszúl adta meg a nevét, akkor amellett, hogy a program megmondja, hogy a névnél van a hiba, azt is megmondja, hogy konkrétan mit hibázott el a felhasználó. Szóval a tesztelõ csapatnak nem csak arra kell figyelni, hogy a program helyesen mûködjön hanem, hogy ha a felhasználó vét el valamilyen hibát, akkor azt a program ismerje fel, és hibaüzenetként jelezzen a felhasználónak nemcsak a probléma meglétérõl, hanem okáról, és annak egy lehetséges megoldásáról. Legvégül pedig ha a program bármelyik teszten is elbukik, akkor azt a tesztelõ csapatnak mihamarabb a fejlesztõ csapat tudtára kell adják, hogy a hibát minnél hamarabb javítani tudják.
+	Mind a program készítõk mind pedig a megrendelõk egyik legnagyobb félelme,
+ha a megrendelt program tele van bug-okkal, ami nem csak a felhasználói
+élményt ronthatja el, hanem akár üzleti károkat is okozhat, valamint
+akár törvényi rendeleteket is megszeghet, ami bírósági pereket is vezethet
+maga után. Ezért maga a program tesztelése számos tényezõt kell figyelembe vegyen. 
+	A program csak akkor léphet a következõ fázisba, ha minden teszteset
+sikeresen végbemegy, és a helyes eredményt adja vissza. A játékos elsõ
+lépésben meg kell adja az adatait ami segítségével a rendszer be tudja
+azonosítani, és ez által meg tudja különböztetni a többi felhasználótól.
+Ezeket az adatokat a rendszer egy adatbázisban menti le és ezért fontos,
+hogy az adatok helyesek legyenek. A rendszer nem engedheti meg például,
+hogy a felhasználó neve szám legyen, vagy akár ne írjon egyáltalán nevet.
+A felhasználó a saját életkorát csak számként tudja megadni valamint mikor
+a nemét tölti ki szintén csak szöveget használhat valamint mindegyiket meg
+kell adja. Annak érdekében, hogy ezek a hibák ne fordulhassanak elõ a
+programnak tesztek sorozatán kell keresztülmennie. Ezeket a teszteket
+a junit keretrendszer segítségével valósítjuk meg, mely lehetõvé teszi,
+hogy teszteket írjunk annak érdekében, hogy lefedjük az összes lehetséges
+esetet, ami elõfordulhat a program futása közben. 
+	A junit 5 segítségével le kell tesztelnünk, hogy a program hogyan
+reagál például, ha helytelenül töltjük ki az alapadatainkat, vagy például
+ha rákattintunk az egyik négyzetre. A programnak reagálnia kell a lehetõ
+legtöbb esetre, és semmilyen esetben se szabad helytelenül leállnia, vagy
+hibás adatokat felvinnie az adatbázisba.
+	A programot nem csak arra kell felkészíteni, hogyha helyes adatokat kap,
+akkor helyesen mûködik e, hanem arra is, hogyha helytelen adatot kap,
+akkor mit reagáljon rá. Az nem megfelelõ, ha például a felhasználó a
+nevébe véletlenül egy számot ír, és a program csak annyit csinál, hogy
+nem indítja el a tesztet. A felhasználó tudtára kell adni, hogy mit
+rontott el, annak érdekében, hogy a lehetõ legpontosabban, és leghamarabb
+ki tudja javítani a hibát, és el tudja kezdeni a tesztet. Ennek érdekében,
+ha rosszúl adta meg a nevét, akkor amellett, hogy a program megmondja,
+hogy a névnél van a hiba, azt is megmondja, hogy konkrétan mit hibázott
+el a felhasználó. Szóval a tesztelõ csapatnak nem csak arra kell figyelni,
+hogy a program helyesen mûködjön hanem, hogy ha a felhasználó vét el
+valamilyen hibát, akkor azt a program ismerje fel, és hibaüzenetként
+ jelezzen a felhasználónak nemcsak a probléma meglétérõl, hanem okáról,
+és annak egy lehetséges megoldásáról. Legvégül pedig ha a program bármelyik
+teszten is elbukik, akkor azt a tesztelõ csapatnak mihamarabb a fejlesztõ
+csapat tudtára kell adják, hogy a hibát minnél hamarabb javítani tudják.
 
 ----------------------------------------------------
 Fizikai környezet:
-Az alkalmazást Java platformon fogjuk fejleszteni. Az alkalmazást a felhasználó több operációs rendszeren is fogja tudni futtatni, ez által nem jelenik meg az a probléma hogy a felhasználó nem tudja használni az alkalmazást kompatibilitási problémák miatt. A támogatott operációs rendszerek a következok: Windows, Linux, MacOS. A felhasználónak egy minimális specifikációjú számítógépre lesz szügsége az alkalmazás futtatásához és használásához. Ezek a minimális specifikációk a következok: a számítógép processzora:Intel Core i3 vagy ezzel egyenértéku AMD processzor, legyen legalább 4GB memória (RAM), legyen hely a számítógépen az alkalmazás telepítéséhez , külso videókártya nem szügséges.Ha a felhasználó meg szeretné nézni, hogy  hogyan teljesített más felhasználókhoz képest akkor internet kapcsolatra is szügsége van hogy az alkalmazás le tudja tölteni más felhasználók adatait, eredményeit.
+Az alkalmazást Java platformon fogjuk fejleszteni. Az alkalmazást a
+felhasználó több operációs rendszeren is fogja tudni futtatni,
+ez által nem jelenik meg az a probléma hogy a felhasználó nem
+tudja használni az alkalmazást kompatibilitási problémák miatt.
+A támogatott operációs rendszerek a következok: Windows, Linux, MacOS.
+A felhasználónak egy minimális specifikációjú számítógépre lesz
+szügsége az alkalmazás futtatásához és használásához. Ezek a
+minimális specifikációk a következok: a számítógép processzora:
+ntel Core i3 vagy ezzel egyenértéku AMD processzor, legyen legalább
+4GB memória (RAM), legyen hely a számítógépen az alkalmazás telepítéséhez,
+külso videókártya nem szügséges.Ha a felhasználó meg szeretné nézni,
+hogy  hogyan teljesített más felhasználókhoz képest akkor internet
+kapcsolatra is szügsége van hogy az alkalmazás le tudja tölteni más
+felhasználók adatait, eredményeit.
 
 Karbantartási terv:
-	Az alkalmazás elkészulte után sem szunik meg a kapcsolat megrendelo és a fejlesztok között. A cégünk két éves garanciát vállal alapból az alkalmazásra. Ha a két éves garanciaido lejár a megrendelo azt meg tudja hosszabítani ha szeretné. 
-Ha a megrendelo bármilyen hibát, “bug”-ot vesz észre az alkalmazásban akkor értesíthetnek minket és a fejlesztoink minnél gyorsabban megpróbálják majd azt kijavítani. Ezt a folyamatot megkönnyítí az ha a hiba bejelentésekor képeket(“screenshot”-okat) is küldenek amin pontosan látszik hogy mikor és hol következett be az említett hiba vagy “bug”. Persze a teszteloink is folyamatosan keresni fogják a hibákat, tehát ha a felhasználó nem is találja meg a hibát de a tesztelok igen, akkor az ki less javítva és a felhasználó letöltheti az új, javított változatot.
-Ha a megrendelo alakítani akar a rendszeren vagy fejlesztéseket, új dolgokat szeretne belerakni az alkalmazásba akkor szintén szólhat nekünk leírva, hogy pontosan mi az elképzelése és mi ezt átadjuk a fejlesztoknak akik megpróbálják majd azt kivitelezni .
+	Az alkalmazás elkészulte után sem szunik meg a kapcsolat megrendelo
+és a fejlesztok között. A cégünk két éves garanciát vállal alapból az
+alkalmazásra. Ha a két éves garanciaido lejár a megrendelo azt meg tudja
+hosszabítani ha szeretné. 
+	Ha a megrendelo bármilyen hibát, “bug”-ot vesz észre az alkalmazásban
+akkor értesíthetnek minket és a fejlesztoink minnél gyorsabban megpróbálják
+majd azt kijavítani. Ezt a folyamatot megkönnyítí az ha a hiba bejelentésekor
+képeket(“screenshot”-okat) is küldenek amin pontosan látszik hogy mikor
+és hol következett be az említett hiba vagy “bug”. Persze a teszteloink
+is folyamatosan keresni fogják a hibákat, tehát ha a felhasználó nem is
+találja meg a hibát de a tesztelok igen, akkor az ki less javítva és a
+felhasználó letöltheti az új, javított változatot.
+	Ha a megrendelo alakítani akar a rendszeren vagy fejlesztéseket,
+új dolgokat szeretne belerakni az alkalmazásba akkor szintén szólhat nekünk
+leírva, hogy pontosan mi az elképzelése és mi ezt átadjuk a fejlesztoknak
+akik megpróbálják majd azt kivitelezni .
 
 ----------------------------------------------------
 
