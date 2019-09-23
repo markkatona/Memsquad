@@ -5,11 +5,29 @@ Követelményspecifikáció
 
 1. Bevezetés
 
-	Az évek során sok kísérletet hajtottak végre különbözo cégek, arra hogy tanulmányozzák a fiatalok memóriájának fejlõdését és hogy melyek a leheto leghatékonyabb módok a memória kapacitás fejlesztésére. A vállalatunk 2015 óta végez kutatásokat ebben a témakörben. Az alkalmazás amelyre igényt tartunk, egy olyan alkalmazás, amely segítségével játékos módon tudjuk felmérni, illetve fejleszteni a diákok memória kapacitását. Vállalatunk elonyben részesíti az innovatív megoldásokat, ezért az alkalmazásnak érdekesnek és modernnek kell lennie, hogy lekösse a fiatalok figyelmét és, hogy ne csak kényszerbol végezzék el a tesztet, mert akkor nem tudnánk meg a valós eredményeket. 
+	Az évek során sok kísérletet hajtottak végre különbözo cégek, arra hogy
+tanulmányozzák a fiatalok memóriájának fejlõdését és hogy melyek a leheto
+leghatékonyabb módok a memória kapacitás fejlesztésére. A vállalatunk 2015 óta
+végez kutatásokat ebben a témakörben. Az alkalmazás amelyre igényt tartunk,
+egy olyan alkalmazás, amely segítségével játékos módon tudjuk felmérni,
+illetve fejleszteni a diákok memória kapacitását. Vállalatunk elonyben
+részesíti az innovatív megoldásokat, ezért az alkalmazásnak érdekesnek
+és modernnek kell lennie, hogy lekösse a fiatalok figyelmét és, hogy ne
+csak kényszerbol végezzék el a tesztet, mert akkor nem tudnánk meg a valós
+eredményeket. 
 
 2. Jelenlegi helyzet
 
-	Jelenleg az ehhez hasonló kisérletek végrehajtása nagyon körülményes, mivel különbözõ idejétmúlt tesztek segítségével mérjük fel a tanulók memóriakapacitását. A teszteket pedig egyesével át kell nézni és összegezni az eredményt, ez a folyamat nagyon lassú és körülményes. A legnyagyobb hátrány pedig abból származik, hogy a fiatalok elveszítik az érdeklodést a kísérlettel kapcsolatban, mert ugyanúgy papíron töltik ki a tesztet, mint bármely más írásbeli dolgozatot. Egy másik hátrányt pedig az képez, hogy mivel nem digitális módon történik a teszt kitöltése, gondoskodnunk kell róla, hogy az iskolákhoz eljussanak ezek a tesztek valamint, hogy a kitöltött példányok visszakerüljenek hozzánk, hogy elvégezzük az eredmények elemzését.
+	Jelenleg az ehhez hasonló kisérletek végrehajtása nagyon körülményes,
+mivel különbözõ idejétmúlt tesztek segítségével mérjük fel a tanulók memóriakapacitását.
+A teszteket pedig egyesével át kell nézni és összegezni az eredményt,
+ez a folyamat nagyon lassú és körülményes. A legnyagyobb hátrány pedig
+abból származik, hogy a fiatalok elveszítik az érdeklodést a kísérlettel
+kapcsolatban, mert ugyanúgy papíron töltik ki a tesztet, mint bármely más
+írásbeli dolgozatot. Egy másik hátrányt pedig az képez, hogy mivel nem
+digitális módon történik a teszt kitöltése, gondoskodnunk kell róla,
+hogy az iskolákhoz eljussanak ezek a tesztek valamint, hogy a kitöltött
+példányok visszakerüljenek hozzánk, hogy elvégezzük az eredmények elemzését.
 
 3. Vágyálom rendszer
 
@@ -53,7 +71,9 @@ képes adott idõkorlát alatt elérni
 	- Reklám
 	- Memóriatesztek
 ->Üzleti folyamatok modellezése:
-	- a diák elmegy az iskolába -> több órát tanulnak és elfáradnak -> kitöltik a tesztet -> az eredmények összesítése-> a megszületett eredmények nem tükrözik a valóságot -> a kísérlet eredménye nem teljesen megbízható
+	- a diák elmegy az iskolába -> több órát tanulnak és elfáradnak -> kitöltik a tesztet 
+-> az eredmények összesítése-> a megszületett eredmények nem tükrözik a valóságot ->
+ a kísérlet eredménye nem teljesen megbízható
 
 5. Igényelt üzleti folymatok modellje
 
@@ -80,4 +100,5 @@ képes adott idõkorlát alatt elérni
 	- Emberi koncentrációképesség
 	- Reakcióidõ
 -Üzleti folyamatok modellezése:
-	hazamegy a diák -> kényelembe helyezi magát -> leül játszani az appal -> megcsinálja a tesztet -> folytatja a hétköznapját
+	hazamegy a diák -> kényelembe helyezi magát -> leül játszani az appal ->
+megcsinálja a tesztet -> folytatja a hétköznapját
