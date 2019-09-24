@@ -1,43 +1,27 @@
 package game.controller;
 
 import game.model.GameData;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javafx.util.Duration;
 
+import java.security.Key;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class App extends Application {
     GameData gameData = new GameData();
     public void start(Stage stage) throws InterruptedException {
-        /*fxData.setStage(stage);
 
-        //főmenü scene
-        MainMenu mainMenu = new MainMenu(fxData.getImage());
-        Scene mainMenuScene = new Scene(mainMenu);
-        fxData.setStartMenu(mainMenuScene);
-
-        //játék végi menü scene
-        EndMenu endMenu = new EndMenu(fxData.getImage());
-        Scene endMenuScene = new Scene(endMenu);
-        fxData.setEndMenu(endMenuScene);
-        fxData.setEndMenuText(endMenu.text);
-
-        button_press_handler(mainMenu.new_game_button);
-        button_press_handler(mainMenu.load_game_button);
-        button_press_handler(mainMenu.exit_game_button);
-        button_press_handler(endMenu.new_game_button);
-        button_press_handler(endMenu.exit_game_button);
-
-        fxData.changeScene(mainMenuScene);
-        stage.show();*/
         setUp();
         stage.setScene(gameData.getMainScene());
 
@@ -65,9 +49,65 @@ public class App extends Application {
         gameData.setMainScene(new Scene(gameData.getMainGroup(),600,400));
 
         tableHandler(gameData.getButtons());
+        startButtonHandler(gameData.getStart());
         gameData.setHaveToPress(new Boolean[36]);
         allFalse();
 
+    }
+
+    public void startButtonHandler(Button startButton){
+        startButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
+                //gameFunction(3);
+                try {
+                    gameFunction(3);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void gameFunction(int db) throws InterruptedException {
+        allFalse();
+        allDisable();
+        Random random = new Random();
+        ArrayList<Integer> randomnumbers = new ArrayList<Integer>();
+        int rand;
+        int i=0;
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(300), event -> {
+                    changeToGreen(gameData.getButtons()[randomnumbers.get(0)]);
+                }),
+                new KeyFrame(Duration.millis(600), event -> {
+                    changeToGray(gameData.getButtons()[randomnumbers.get(0)]);
+                    randomnumbers.remove(0);
+                })
+        );
+        timeline.setCycleCount(db);
+
+        while (true){
+            rand = random.nextInt(36);
+            while (gameData.getHaveToPress()[rand]){
+                rand = random.nextInt(36);
+            }
+            gameData.getHaveToPress()[rand]=true;
+            randomnumbers.add(rand);
+            i++;
+            if(i == db){
+                break;
+            }
+        }
+        timeline.play();
+    }
+    public void changeToGreen(Button button){
+        System.out.println("set to green");
+        button.setStyle("-fx-background-color: #00ff00; ");
+    }
+    public void changeToGray(Button button){
+        System.out.println("set to gray");
+        button.setStyle("-fx-background-color: #808080; ");
     }
 
     public static void main(String[] args) {
@@ -80,9 +120,9 @@ public class App extends Application {
             final int j=i;
             buttons[i].setOnAction(event->buttonHandler(buttons[j]));
         }
-        gameData.getStart().setOnAction(event -> {
+        /*gameData.getStart().setOnAction(event -> {
             randomNumbers(5);
-        });
+        });*/
         //kiir();
     }
 
@@ -126,7 +166,7 @@ public class App extends Application {
     }
 
     //random kiválasztja, hogy melyik gombokat kell megnyomni
-    public void randomNumbers(int db){
+    /*public void randomNumbers(int db){
         allFalse();
         allDisable();
         Random random = new Random();
@@ -146,7 +186,7 @@ public class App extends Application {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
     //kiírja az összes gomb állapotát(meg kell nyomni vagy sem)
     public void kiir(){
