@@ -7,14 +7,18 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.security.Key;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -24,17 +28,21 @@ import java.util.concurrent.TimeUnit;
 
 public class App extends Application {
     GameData gameData = new GameData();
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage) throws InterruptedException, IOException {
 
         setUp();
         stage.setScene(gameData.getMainScene());
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        stage.setTitle("MemoRize");
+        //stage.setScene(new Scene(root, 600, 400));
+        //Platform.runLater(root::requestFocus);
 
         //5 random gombot kell megnyomni
         //randomNumbers(5);
         //kiir();
         stage.show();
         //TimeUnit.SECONDS.sleep(10);
-        //System.out.println("p;lda");
+        //System.out.println("példa");
     }
 
     //felsetupolja a scene-t, valamint néhány egyébb változót
