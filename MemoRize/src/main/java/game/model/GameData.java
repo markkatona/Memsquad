@@ -10,11 +10,14 @@ public class GameData {
     private Scene mainScene;
     private Button[] buttons;
     private Boolean[] haveToPress;
+    private int[] haveToPress2;
     private Button start;
     private int eltalalt;
     private int elrontott;
     private int db;
     private int n_edik_proba;
+    private int level;
+    private int wait;
 
     public GameData(){
 
@@ -97,5 +100,29 @@ public class GameData {
 
     public void setN_edik_proba(int n_edik_proba) {
         this.n_edik_proba = n_edik_proba;
+    }
+
+    public int[] getHaveToPress2() {
+        return haveToPress2;
+    }
+
+    public void setHaveToPress2(int[] haveToPress2) {
+        this.haveToPress2 = haveToPress2;
+    }
+
+    public int getWait() {
+        return wait;
+    }
+
+    public void setWait(int wait) {
+        this.wait = wait;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

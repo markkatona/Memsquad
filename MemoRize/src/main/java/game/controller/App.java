@@ -52,15 +52,22 @@ public class App extends Application {
         gameData.getMainGroup().getChildren().addAll(gameData.getButtons());
         gameData.setMainScene(new Scene(gameData.getMainGroup(),600,400));
 
-        tableHandler(gameData.getButtons());
+        //tableHandler(gameData.getButtons());
         startButtonHandler(gameData.getStart());
         gameData.setHaveToPress(new Boolean[36]);
+        gameData.setHaveToPress2(new int[36]);
         allFalse();
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setDb(3);
         gameData.setN_edik_proba(0);
 
+        if (gameData.getDb()==0) {
+            gameData.setDb(3);
+        }
+        if (gameData.getLevel()==0){
+            gameData.setLevel(1);
+        }
     }
 
     public void startButtonHandler(Button startButton){
@@ -69,6 +76,8 @@ public class App extends Application {
                 gameData.setElrontott(0);
                 gameData.setEltalalt(0);
                 gameData.setN_edik_proba(0);
+                gameData.setWait(0);
+                alterTableHandler(gameData.getButtons());
                 //gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
                 //gameFunction(3);
                 try {
@@ -96,6 +105,11 @@ public class App extends Application {
                 new KeyFrame(Duration.millis(1200), event -> {
                     changeToGray(gameData.getButtons()[randomnumbers.get(0)]);
                     randomnumbers.remove(0);
+                    gameData.setWait(gameData.getWait()+1);
+                    System.out.println(gameData.getWait());
+                    if (gameData.getWait()==gameData.getDb()){
+                        tableHandler(gameData.getButtons());
+                    }
                 })
         );
         timeline.setCycleCount(db);
@@ -106,6 +120,7 @@ public class App extends Application {
                 rand = random.nextInt(36);
             }
             gameData.getHaveToPress()[rand]=true;
+            gameData.getHaveToPress2()[i]=rand;
             randomnumbers.add(rand);
             i++;
             if(i == db){
@@ -147,6 +162,13 @@ public class App extends Application {
         }
     }
 
+    public void alterTableHandler(Button[] buttons){
+        for (int i=0; i<buttons.length; i++){
+            final int j=i;
+            buttons[i].setOnAction(event->{});
+        }
+    }
+
     //A gombok kezeléséért felel a táblán
     public void buttonHandler(Button button){
         int id=Integer.parseInt(button.getId());
@@ -158,7 +180,8 @@ public class App extends Application {
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.millis(20), event -> {
                         //System.out.println("Az adott elem sorszáma: "+id);
-                        if (gameData.getHaveToPress()[id]) {
+                        //if (gameData.getHaveToPress()[id]) {
+                        if (gameData.getHaveToPress2()[gameData.getN_edik_proba()-1]==id){
                             changeToGreen(gameData.getButtons()[id]);
                             gameData.setEltalalt(gameData.getEltalalt() + 1);
                             //System.out.println("Eltaláltad");
@@ -170,6 +193,10 @@ public class App extends Application {
                         }
                         if (gameData.getN_edik_proba()==gameData.getDb()){
                             result();
+                            if (gameData.getEltalalt()==gameData.getDb()){
+                                gameData.setLevel(gameData.getLevel()+1);
+                                gameData.setDb(gameData.getDb()+1);
+                            }
                         }
                     }),
                     new KeyFrame(Duration.millis(800), event -> {
@@ -220,6 +247,7 @@ public class App extends Application {
         System.out.println("Eltaláltak száma: "+gameData.getEltalalt());
         System.out.println("Elrontottak száma: "+gameData.getElrontott());
         System.out.println("Teljesítmény: "+(int)((gameData.getEltalalt()/(double)gameData.getDb())*100)+"%");
+        System.out.println("Az általad elért szint: "+gameData.getLevel());
     }
 
 }
