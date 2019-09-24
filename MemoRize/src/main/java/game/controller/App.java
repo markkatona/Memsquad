@@ -62,7 +62,10 @@ public class App extends Application {
     public void startButtonHandler(Button startButton){
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
+                gameData.setElrontott(0);
+                gameData.setEltalalt(0);
+                gameData.setN_edik_proba(0);
+                //gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
                 //gameFunction(3);
                 try {
                     gameFunction(gameData.getDb());
@@ -84,7 +87,7 @@ public class App extends Application {
                 new KeyFrame(Duration.millis(200), event -> {
                     changeToGreen(gameData.getButtons()[randomnumbers.get(0)]);
                     gameData.getHaveToPress()[randomnumbers.get(0)]=true;
-                    System.out.println(randomnumbers.get(0));
+                    //System.out.println(randomnumbers.get(0));
                 }),
                 new KeyFrame(Duration.millis(1200), event -> {
                     changeToGray(gameData.getButtons()[randomnumbers.get(0)]);
@@ -108,12 +111,15 @@ public class App extends Application {
         timeline.play();
     }
     public void changeToGreen(Button button){
-        System.out.println("set to green");
+        //System.out.println("set to green");
         button.setStyle("-fx-background-color: #00ff00; ");
     }
     public void changeToGray(Button button){
-        System.out.println("set to gray");
+        //System.out.println("set to gray");
         button.setStyle("-fx-background-color: #808080; ");
+    }
+    public void changeToRed(Button button){
+        button.setStyle("-fx-background-color: #ff0000; ");
     }
 
     public static void main(String[] args) {
@@ -126,34 +132,42 @@ public class App extends Application {
             final int j=i;
             buttons[i].setOnAction(event->buttonHandler(buttons[j]));
         }
-        /*gameData.getStart().setOnAction(event -> {
-            randomNumbers(5);
-        });*/
-        //kiir();
     }
 
     //A gombok kezeléséért felel a táblán
     public void buttonHandler(Button button){
         int id=Integer.parseInt(button.getId());
         gameData.setN_edik_proba(gameData.getN_edik_proba()+1);
+
+        //System.out.println("n-edik proba: "+gameData.getN_edik_proba());
+        //System.out.println("ennyiszer kell kattintani: "+gameData.getDb());
         if (gameData.getN_edik_proba()<=gameData.getDb()) {
-            if (gameData.getHaveToPress()[id]) {
-                //button.setId(Integer.toString(1));
-                //button.setStyle("-fx-background-color: #0080ff "); //a gomb színe kék színre vált
-                button.setStyle("-fx-background-color: #00ff00; "); //a gomb színe z0ld szinre vált
-                gameData.setEltalalt(gameData.getEltalalt() + 1);
-            } else {
-                //button.setId(Integer.toString(0));
-                button.setStyle("-fx-background-color: #ff0000 "); //a gomb szìne pirosra vált
-                gameData.setElrontott(gameData.getElrontott() + 1);
-                //button.setStyle("-fx-background-color: #808080 "); //a gomb színe szürke szinre vált
-            }
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.millis(20), event -> {
+                        //System.out.println("Az adott elem sorszáma: "+id);
+                        if (gameData.getHaveToPress()[id]) {
+                            changeToGreen(gameData.getButtons()[id]);
+                            gameData.setEltalalt(gameData.getEltalalt() + 1);
+                            //System.out.println("Eltaláltad");
+
+                        } else {
+                            changeToRed(gameData.getButtons()[id]);
+                            gameData.setElrontott(gameData.getElrontott() + 1);
+                            //System.out.println("Elrontottad");
+                        }
+                        if (gameData.getN_edik_proba()==gameData.getDb()){
+                            result();
+                        }
+                    }),
+                    new KeyFrame(Duration.millis(800), event -> {
+                        changeToGray(gameData.getButtons()[id]);
+                    })
+            );
+            timeline.play();
         }
-        if (gameData.getN_edik_proba()==gameData.getDb()){
-            System.out.println("Eltaláltak száma: "+gameData.getEltalalt());
-            System.out.println("Elrontottak száma: "+gameData.getElrontott());
-            System.out.println("Teljesítmény: "+(int)((gameData.getEltalalt()/(double)gameData.getDb())*100)+"%");
-        }
+
+
+
     }
 
     //ezt a részt fogja felváltani a view, jelenleg csak sablonként használ egy kézzel setupolt gombot
@@ -182,34 +196,17 @@ public class App extends Application {
         }
     }
 
-    //random kiválasztja, hogy melyik gombokat kell megnyomni
-    /*public void randomNumbers(int db){
-        allFalse();
-        allDisable();
-        Random random = new Random();
-        int rand;
-        int i=0;
-        while (i<db){
-            i++;
-            rand = random.nextInt(36);
-            while (gameData.getHaveToPress()[rand]){
-                rand = random.nextInt(36);
-            }
-            gameData.getHaveToPress()[rand]=true;
-            gameData.getButtons()[rand].setStyle("-fx-background-color: #00ff00; ");
-            try {
-                TimeUnit.MILLISECONDS.sleep(30);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
     //kiírja az összes gomb állapotát(meg kell nyomni vagy sem)
     public void kiir(){
         for (int i = 0; i <gameData.getHaveToPress().length ; i++) {
             System.out.println(gameData.getHaveToPress()[i]);
         }
+    }
+
+    public void result(){
+        System.out.println("Eltaláltak száma: "+gameData.getEltalalt());
+        System.out.println("Elrontottak száma: "+gameData.getElrontott());
+        System.out.println("Teljesítmény: "+(int)((gameData.getEltalalt()/(double)gameData.getDb())*100)+"%");
     }
 
 }
