@@ -1,6 +1,8 @@
 package game.controller;
 
 import game.model.GameData;
+import game.model.PlayerData;
+import game.model.SQLPersistance;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,6 +16,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.security.Key;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -123,6 +127,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        PlayerData playerData = new PlayerData();
+        SQLPersistance sqlPersistance = new SQLPersistance();
+        playerData.setNev("Nagy János");
+        playerData.setKor(25);
+        playerData.setNem("férfi");
+        playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
+
+        sqlPersistance.insert(playerData);
+
         launch(args);
     }
 
