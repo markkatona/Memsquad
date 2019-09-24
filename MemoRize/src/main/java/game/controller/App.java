@@ -52,6 +52,10 @@ public class App extends Application {
         startButtonHandler(gameData.getStart());
         gameData.setHaveToPress(new Boolean[36]);
         allFalse();
+        gameData.setElrontott(0);
+        gameData.setEltalalt(0);
+        gameData.setDb(3);
+        gameData.setN_edik_proba(0);
 
     }
 
@@ -61,7 +65,7 @@ public class App extends Application {
                 gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
                 //gameFunction(3);
                 try {
-                    gameFunction(3);
+                    gameFunction(gameData.getDb());
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
@@ -77,10 +81,12 @@ public class App extends Application {
         int rand;
         int i=0;
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.millis(300), event -> {
+                new KeyFrame(Duration.millis(200), event -> {
                     changeToGreen(gameData.getButtons()[randomnumbers.get(0)]);
+                    gameData.getHaveToPress()[randomnumbers.get(0)]=true;
+                    System.out.println(randomnumbers.get(0));
                 }),
-                new KeyFrame(Duration.millis(600), event -> {
+                new KeyFrame(Duration.millis(1200), event -> {
                     changeToGray(gameData.getButtons()[randomnumbers.get(0)]);
                     randomnumbers.remove(0);
                 })
@@ -129,13 +135,24 @@ public class App extends Application {
     //A gombok kezeléséért felel a táblán
     public void buttonHandler(Button button){
         int id=Integer.parseInt(button.getId());
-        if(id==0) {
-            button.setId(Integer.toString(1));
-            button.setStyle("-fx-background-color: #0080ff "); //a gomb színe kék színre vált
-            //button.setStyle("-fx-background-color: #00ff00; "); //a gomb színe z0ld szinre vált
-        }else{
-            button.setId(Integer.toString(0));
-            button.setStyle("-fx-background-color: #808080 "); //a gomb színe szürke szinre vált
+        gameData.setN_edik_proba(gameData.getN_edik_proba()+1);
+        if (gameData.getN_edik_proba()<=gameData.getDb()) {
+            if (gameData.getHaveToPress()[id]) {
+                //button.setId(Integer.toString(1));
+                //button.setStyle("-fx-background-color: #0080ff "); //a gomb színe kék színre vált
+                button.setStyle("-fx-background-color: #00ff00; "); //a gomb színe z0ld szinre vált
+                gameData.setEltalalt(gameData.getEltalalt() + 1);
+            } else {
+                //button.setId(Integer.toString(0));
+                button.setStyle("-fx-background-color: #ff0000 "); //a gomb szìne pirosra vált
+                gameData.setElrontott(gameData.getElrontott() + 1);
+                //button.setStyle("-fx-background-color: #808080 "); //a gomb színe szürke szinre vált
+            }
+        }
+        if (gameData.getN_edik_proba()==gameData.getDb()){
+            System.out.println("Eltaláltak száma: "+gameData.getEltalalt());
+            System.out.println("Elrontottak száma: "+gameData.getElrontott());
+            System.out.println("Teljesítmény: "+(int)((gameData.getEltalalt()/(double)gameData.getDb())*100)+"%");
         }
     }
 
@@ -147,7 +164,7 @@ public class App extends Application {
             buttons[i].setLayoutX(30*(i%6));
             buttons[i].setLayoutY(30*(i/6));
             buttons[i].setMinSize(25, 25);
-            buttons[i].setId(Integer.toString(0));
+            buttons[i].setId(Integer.toString(i));
             buttons[i].setStyle("-fx-background-color: #808080 ");
         }
         return buttons;

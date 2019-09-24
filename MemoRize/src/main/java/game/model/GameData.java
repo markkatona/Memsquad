@@ -11,6 +11,10 @@ public class GameData {
     private Button[] buttons;
     private Boolean[] haveToPress;
     private Button start;
+    private int eltalalt;
+    private int elrontott;
+    private int db;
+    private int n_edik_proba;
 
     public GameData(){
 
@@ -61,5 +65,37 @@ public class GameData {
 
     public void setStart(Button start) {
         this.start = start;
+    }
+
+    public int getEltalalt() {
+        return eltalalt;
+    }
+
+    public void setEltalalt(int eltalalt) {
+        this.eltalalt = eltalalt;
+    }
+
+    public int getElrontott() {
+        return elrontott;
+    }
+
+    public void setElrontott(int elrontott) {
+        this.elrontott = elrontott;
+    }
+
+    public int getDb() {
+        return db;
+    }
+
+    public void setDb(int db) {
+        this.db = db;
+    }
+
+    public int getN_edik_proba() {
+        return n_edik_proba;
+    }
+
+    public void setN_edik_proba(int n_edik_proba) {
+        this.n_edik_proba = n_edik_proba;
     }
 }
