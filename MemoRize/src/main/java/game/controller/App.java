@@ -64,14 +64,20 @@ public class App extends Application {
 
         setUp();
         stage.setScene(gameData.getMainScene());
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
-        stage.setTitle("MemoRize");
-        stage.setScene(new Scene(root, 600, 400));
-        Platform.runLater(root::requestFocus);
+        //Menü megjelenítéséért felel
+        Parent menu = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        stage.setScene(new Scene(menu, 600, 400));
+        Platform.runLater(menu::requestFocus);
+
+        //Játék főképernyőjének megjelenítéséért felel
+        //Parent gameGUI = FXMLLoader.load(getClass().getResource("/fxml/gameGUI.fxml"));
+        //Platform.runLater(gameGUI::requestFocus);
+        //stage.setScene(new Scene(gameGUI, 600, 400));
 
         //5 random gombot kell megnyomni
         //randomNumbers(5);
         //kiir();
+        stage.setTitle("MemoRize");
         stage.show();
         //TimeUnit.SECONDS.sleep(10);
         //System.out.println("példa");
