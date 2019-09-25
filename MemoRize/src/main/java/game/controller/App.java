@@ -16,6 +16,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -26,17 +27,32 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 public class App extends Application {
     GameData gameData = new GameData();
+
+    @FXML
+    Button menuButton;
+
+    @FXML
+    TextField nev;
+
+    @FXML
+    private void foglalAction(javafx.event.ActionEvent actionEvent) {
+        System.out.println(nev.getText());
+    }
+
+
     public void start(Stage stage) throws InterruptedException, IOException {
 
         setUp();
         stage.setScene(gameData.getMainScene());
-        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
         stage.setTitle("MemoRize");
-        //stage.setScene(new Scene(root, 600, 400));
-        //Platform.runLater(root::requestFocus);
+        stage.setScene(new Scene(root, 600, 400));
+        Platform.runLater(root::requestFocus);
 
         //5 random gombot kell megnyomni
         //randomNumbers(5);
