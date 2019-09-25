@@ -32,6 +32,7 @@ import javafx.fxml.Initializable;
 
 public class App extends Application {
     GameData gameData = new GameData();
+    static PlayerData playerData = new PlayerData();
 
     @FXML
     Button menuButton;
@@ -40,8 +41,22 @@ public class App extends Application {
     TextField nev;
 
     @FXML
+    TextField kor;
+
+    @FXML
+    TextField nem;
+
+    @FXML
     private void foglalAction(javafx.event.ActionEvent actionEvent) {
-        System.out.println(nev.getText());
+        SQLPersistance sqlPersistance = new SQLPersistance();
+        sqlPersistance.openEntityManager();
+        playerData.setNev(nev.getText());
+        playerData.setKor(Integer.parseInt(kor.getText()));
+        playerData.setNem(nem.getText());
+        playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
+        sqlPersistance.insertPlayerData(playerData);
+        sqlPersistance.closeEntityManager();
+
     }
 
 
@@ -167,23 +182,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        PlayerData playerData = new PlayerData();
         PlayerStat playerStat = new PlayerStat();
         SQLPersistance sqlPersistance = new SQLPersistance();
         sqlPersistance.openEntityManager();
-
-        playerData.setNev("Nagy János");
-        playerData.setKor(25);
-        playerData.setNem("férfi");
-        playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
-
-        sqlPersistance.insertPlayerData(playerData);
 
         playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(7);
         playerStat.setGame_time(300);
         playerStat.setHit_rate(1);
-        sqlPersistance.insertPlayerStat(playerStat);
+        //sqlPersistance.insertPlayerStat(playerStat);
 
         sqlPersistance.closeEntityManager();
 
