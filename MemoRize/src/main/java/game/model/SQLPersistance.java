@@ -3,30 +3,39 @@ package game.model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class SQLPersistance {
 
-    private static EntityManager em;
+    private EntityManagerFactory emf;
+    private EntityManager em;
 
-    public void insert(PlayerData playerData){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-persistence-unit-1");
-        em = emf.createEntityManager();
-
-        em.getTransaction().begin();
-        em.persist(playerData);
-        em.getTransaction().commit();
-
+    //megnyitja az entity managert
+    public void openEntityManager(){
+        this.emf = Persistence.createEntityManagerFactory("jpa-persistence-unit-1");
+        this.em = emf.createEntityManager();
+    }
+    //bezárja az entity managert
+    public void closeEntityManager(){
         em.close();
         emf.close();
     }
-
-    /*public GameState read_table(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-persistence-unit-1");
-        em = emf.createEntityManager();
-        GameState gameState= em.find(GameState.class, 2);
-        em.close();
-        emf.close();
-        return gameState;
-    }*/
+    //feltölti a játékos személyes adatait az adatbázis "felhasznalo_adatai" táblájába
+    public void insertPlayerData(PlayerData playerData){
+        em.getTransaction().begin();
+        em.persist(playerData);
+        em.getTransaction().commit();
+    }
+    //feltölti a játékos statisztikai adatait az adatbázis "statisztika" táblájába
+    public void insertPlayerStat(PlayerStat playerStat){
+        em.getTransaction().begin();
+        em.persist(playerStat);
+        em.getTransaction().commit();
+    }
+    //kiolvassa a legutóbb beillesztett sor id-ját a "felhasznalo_adatai" táblából
+    public int readIdFromPlayerData(){
+        Query q = em.createNativeQuery("SELECT fa.user_id FROM felhasznalo_adatai fa");
+        return ((int) q.getResultList().get(q.getResultList().size() - 1));
+    }
 
 }

@@ -2,6 +2,7 @@ package game.controller;
 
 import game.model.GameData;
 import game.model.PlayerData;
+import game.model.PlayerStat;
 import game.model.SQLPersistance;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -151,13 +152,24 @@ public class App extends Application {
 
     public static void main(String[] args) {
         PlayerData playerData = new PlayerData();
+        PlayerStat playerStat = new PlayerStat();
         SQLPersistance sqlPersistance = new SQLPersistance();
+        sqlPersistance.openEntityManager();
+
         playerData.setNev("Nagy János");
         playerData.setKor(25);
         playerData.setNem("férfi");
         playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
 
-        sqlPersistance.insert(playerData);
+        sqlPersistance.insertPlayerData(playerData);
+
+        playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
+        playerStat.setXp_lvl(7);
+        playerStat.setGame_time(300);
+        playerStat.setHit_rate(1);
+        sqlPersistance.insertPlayerStat(playerStat);
+
+        sqlPersistance.closeEntityManager();
 
         launch(args);
     }
