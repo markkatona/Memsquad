@@ -12,4 +12,5 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
             <property name="packagesToScan" value="game.model" />
         </properties>
     </persistence-unit>
+
 </persistence>

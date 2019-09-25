@@ -21,7 +21,4 @@ public class PlayerData {
     public void setNem(String nem) { this.nem = nem; }
     public void setKitoltes_ideje(Date kitoltes_ideje) { this.kitoltes_ideje = kitoltes_ideje; }
 
-    public int getUser_id() {
-        return user_id;
-    }
 }
