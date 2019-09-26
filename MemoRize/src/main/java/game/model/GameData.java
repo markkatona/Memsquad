@@ -1,11 +1,15 @@
 package game.model;
 
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 
 public class GameData {
+    private Stage gameStage;
+
     private Group mainGroup;
     private Scene mainScene;
     private Button[] buttons;
@@ -21,6 +25,14 @@ public class GameData {
 
     public GameData(){
 
+    }
+
+    public void setGameStage(Stage gameStage) {
+        this.gameStage = gameStage;
+    }
+
+    public Stage getGameStage() {
+        return gameStage;
     }
 
     public Scene menuView(){

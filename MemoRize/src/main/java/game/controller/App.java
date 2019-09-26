@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,30 +26,35 @@ import java.security.Key;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class App extends Application {
-    GameData gameData = new GameData();
-    static PlayerData playerData = new PlayerData();
+    public static GameData gameData = new GameData();
+    public static PlayerData playerData = new PlayerData();
+    public static PlayerStat playerStat = new PlayerStat();
+    public static SQLPersistance sqlPersistance = new SQLPersistance();
 
     @FXML
     Button menuButton;
-
+    @FXML
+    Button nextLevel;
     @FXML
     TextField nev;
-
     @FXML
     TextField kor;
-
     @FXML
     TextField nem;
 
+    //a főmenü gombja mit csináljon ha megnyomjuk
     @FXML
-    private void foglalAction(javafx.event.ActionEvent actionEvent) {
-        SQLPersistance sqlPersistance = new SQLPersistance();
+    private void menuAction(ActionEvent actionEvent) {
         sqlPersistance.openEntityManager();
         playerData.setNev(nev.getText());
         playerData.setKor(Integer.parseInt(kor.getText()));
@@ -56,50 +62,89 @@ public class App extends Application {
         playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
         sqlPersistance.insertPlayerData(playerData);
         sqlPersistance.closeEntityManager();
-
+        changeScene("gameGUI");
     }
 
+    //a next level gomb mit csináljon ha megnyomjuk
+    @FXML
+    private void nextLevel(ActionEvent actionEvent){
+        gameData.setElrontott(0);
+        gameData.setEltalalt(0);
+        gameData.setN_edik_proba(0);
+        gameData.setWait(0);
+        alterTableHandler(gameData.getButtons());
+        try {
+            gameFunction(gameData.getDb());
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //megkeresi az összes Node-ot egy Parent-en belül, és kiválasztja csak azokat a Node-okat amik Button-ok
+    public static List<Node> getAllButtons(List<Node> all_the_buttons, Parent parent) {
+        List<Node> result = new LinkedList<>();
+        result.addAll(parent.getChildrenUnmodifiable().stream().collect(Collectors.toList()));
+        for (Node node: result) {
+            if(node instanceof Parent){
+                getAllButtons(all_the_buttons, (Parent) node);
+            }
+        }
+        all_the_buttons.addAll(result.stream().filter(e -> e instanceof Button).collect(Collectors.toList()));
+        return result;
+    }
+
+    //scene-t változtat
+    public void changeScene(String scene){
+        switch (scene){
+            case "menu": {
+                //fájlbeolvasás
+                Parent menu = null;
+                try { menu = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+                } catch (IOException e) { e.printStackTrace(); }
+                Platform.runLater(menu::requestFocus);
+                //scene váltás
+                gameData.getGameStage().setScene(new Scene(menu));
+                break;
+            }
+            case "gameGUI": {
+                //fáj beolvasás
+                Parent gameGUI = null;
+                try { gameGUI = FXMLLoader.load(getClass().getResource("/fxml/gameGUI.fxml"));
+                } catch (IOException e) { e.printStackTrace(); }
+                Platform.runLater(gameGUI::requestFocus);
+                //scene váltás
+                gameData.getGameStage().setScene(new Scene(gameGUI));
+
+                //megkeressük a gameGUI-n belül az összes gombot, berakjuk az all_the_buttons listába
+                List<Node> all_the_buttons = new LinkedList<>();
+                getAllButtons(all_the_buttons, gameGUI);
+
+                //gameDataban csinál változásokat
+                setUp();
+
+                //az all_the buttons listából egy tömbbe rakjuk át az összes gombot és átadjuk a GameData osztálynak
+                Button[] buttons = new Button[36];
+                for (int i = 0; i<36; i++){
+                    buttons[i] = (Button) all_the_buttons.get(i);
+                }
+                gameData.setButtons(buttons);
+                break;
+            }
+        }
+    }
 
     public void start(Stage stage) throws InterruptedException, IOException {
-
-        setUp();
-        stage.setScene(gameData.getMainScene());
-        //Menü megjelenítéséért felel
-        Parent menu = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
-        stage.setScene(new Scene(menu, 600, 400));
-        Platform.runLater(menu::requestFocus);
-
-        //Játék főképernyőjének megjelenítéséért felel
-        //Parent gameGUI = FXMLLoader.load(getClass().getResource("/fxml/gameGUI.fxml"));
-        //Platform.runLater(gameGUI::requestFocus);
-        //stage.setScene(new Scene(gameGUI, 600, 400));
-
-        //5 random gombot kell megnyomni
-        //randomNumbers(5);
-        //kiir();
-        stage.setTitle("MemoRize");
+        //lementjük a stage-et hogy később tudjunk rajta scene-t cserélni
+        gameData.setGameStage(stage);
+        //alapból a menü jöjjön be
+        changeScene("menu");
+        //title és  stage megjelenítés
+        gameData.getGameStage().setTitle("MemoRize");
         stage.show();
-        //TimeUnit.SECONDS.sleep(10);
-        //System.out.println("példa");
     }
 
     //felsetupolja a scene-t, valamint néhány egyébb változót
     public void setUp(){
-        gameData.setMainGroup(new Group());
-        gameData.setStart(new Button("Start"));
-        gameData.getStart().setLayoutX(40);
-        gameData.getStart().setLayoutY(350);
-        gameData.getStart().setMinSize(25, 25);
-        gameData.getStart().setId(Integer.toString(0));
-        gameData.getMainGroup().getChildren().add(gameData.getStart());
-
-        gameData.setButtons(gombolo());
-
-        gameData.getMainGroup().getChildren().addAll(gameData.getButtons());
-        gameData.setMainScene(new Scene(gameData.getMainGroup(),600,400));
-
-        //tableHandler(gameData.getButtons());
-        startButtonHandler(gameData.getStart());
         gameData.setHaveToPress(new Boolean[36]);
         gameData.setHaveToPress2(new int[36]);
         allFalse();
@@ -114,25 +159,6 @@ public class App extends Application {
         if (gameData.getLevel()==0){
             gameData.setLevel(1);
         }
-    }
-
-    public void startButtonHandler(Button startButton){
-        startButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                gameData.setElrontott(0);
-                gameData.setEltalalt(0);
-                gameData.setN_edik_proba(0);
-                gameData.setWait(0);
-                alterTableHandler(gameData.getButtons());
-                //gameData.getStart().setStyle("-fx-background-color: #00ff00; ");
-                //gameFunction(3);
-                try {
-                    gameFunction(gameData.getDb());
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
     }
 
     public void gameFunction(int db) throws InterruptedException {
@@ -176,11 +202,9 @@ public class App extends Application {
         timeline.play();
     }
     public void changeToGreen(Button button){
-        //System.out.println("set to green");
         button.setStyle("-fx-background-color: #00ff00; ");
     }
     public void changeToGray(Button button){
-        //System.out.println("set to gray");
         button.setStyle("-fx-background-color: #808080; ");
     }
     public void changeToRed(Button button){
@@ -188,17 +212,16 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        PlayerStat playerStat = new PlayerStat();
-        SQLPersistance sqlPersistance = new SQLPersistance();
-        sqlPersistance.openEntityManager();
-
+        //////////////////////////////////////////////////////
+        //ezt kell majd berakni az exit game gomb eventjének//
+        //////////////////////////////////////////////////////
+        /*sqlPersistance.openEntityManager();
         playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(7);
         playerStat.setGame_time(300);
         playerStat.setHit_rate(1);
-        //sqlPersistance.insertPlayerStat(playerStat);
-
-        sqlPersistance.closeEntityManager();
+        sqlPersistance.insertPlayerStat(playerStat);
+        sqlPersistance.closeEntityManager();*/
 
         launch(args);
     }
@@ -254,9 +277,6 @@ public class App extends Application {
             );
             timeline.play();
         }
-
-
-
     }
 
     //ezt a részt fogja felváltani a view, jelenleg csak sablonként használ egy kézzel setupolt gombot
