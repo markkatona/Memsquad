@@ -22,6 +22,11 @@ public class GameData {
     private int n_edik_proba;
     private int level;
     private int wait;
+    private float allflash;
+    private float success;
+    private long starttime;
+    private long endtime;
+
 
     public GameData(){
 
@@ -136,5 +141,37 @@ public class GameData {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public float getAllflash() {
+        return allflash;
+    }
+
+    public void setAllflash(float allflash) {
+        this.allflash = allflash;
+    }
+
+    public float getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(float success) {
+        this.success = success;
+    }
+
+    public float getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(long starttime) {
+        this.starttime = starttime;
+    }
+
+    public float getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(long endtime) {
+        this.endtime = endtime;
     }
 }

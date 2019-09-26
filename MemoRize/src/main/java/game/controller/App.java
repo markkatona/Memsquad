@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -43,6 +44,10 @@ public class App extends Application {
 
     @FXML
     Button menuButton;
+
+    @FXML
+    Button exitButton;
+
     @FXML
     Button nextLevel;
     @FXML
@@ -62,12 +67,15 @@ public class App extends Application {
         playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
         sqlPersistance.insertPlayerData(playerData);
         sqlPersistance.closeEntityManager();
+        gameData.setStarttime(System.currentTimeMillis());
         changeScene("gameGUI");
     }
 
     //a next level gomb mit csináljon ha megnyomjuk
     @FXML
     private void nextLevel(ActionEvent actionEvent){
+        gameData.setAllflash(gameData.getAllflash() + gameData.getDb());
+        gameData.setSuccess(gameData.getSuccess() + gameData.getEltalalt());
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setN_edik_proba(0);
@@ -104,6 +112,8 @@ public class App extends Application {
                 Platform.runLater(menu::requestFocus);
                 //scene váltás
                 gameData.getGameStage().setScene(new Scene(menu));
+                //fejléc eltüntetése
+                //gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
                 break;
             }
             case "gameGUI": {
@@ -141,6 +151,24 @@ public class App extends Application {
         //title és  stage megjelenítés
         gameData.getGameStage().setTitle("MemoRize");
         stage.show();
+    }
+
+    @FXML
+    private void exitGame(){
+        /*sqlPersistance.openEntityManager();
+        playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
+        playerStat.setXp_lvl(gameData.getLevel());
+        playerStat.setGame_time((int) (gameData.getEndtime() - gameData.getStarttime()));
+        playerStat.setHit_rate(gameData.getSuccess()/gameData.getAllflash());
+        sqlPersistance.insertPlayerStat(playerStat);
+        sqlPersistance.closeEntityManager();*/
+        gameData.setEndtime(System.currentTimeMillis());
+        System.out.println(gameData.getEndtime());
+        System.out.println(gameData.getStarttime());
+        System.out.println(gameData.getEndtime()- gameData.getStarttime());
+        System.out.println(gameData.getSuccess());
+        System.out.println(gameData.getAllflash());
+        gameData.getGameStage().close();
     }
 
     //felsetupolja a scene-t, valamint néhány egyébb változót
@@ -268,6 +296,8 @@ public class App extends Application {
                             if (gameData.getEltalalt()==gameData.getDb()){
                                 gameData.setLevel(gameData.getLevel()+1);
                                 gameData.setDb(gameData.getDb()+1);
+                            }else{
+                                gameData.setSuccess(gameData.getSuccess() + gameData.getEltalalt());
                             }
                         }
                     }),
