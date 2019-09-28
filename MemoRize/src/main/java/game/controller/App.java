@@ -159,18 +159,18 @@ public class App extends Application {
     @FXML
     private void exitGame(){
         sqlPersistance.openEntityManager();
-        playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
+        /*playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(gameData.getLevel());
         playerStat.setGame_time((int) (gameData.getEndtime() - gameData.getStarttime()));
         playerStat.setHit_rate(gameData.getSuccess()/gameData.getAllflash());
         sqlPersistance.insertPlayerStat(playerStat);
         sqlPersistance.closeEntityManager();
-        gameData.setEndtime(System.currentTimeMillis());
-        /*System.out.println(gameData.getEndtime());
+        gameData.setEndtime(System.currentTimeMillis());*/
+        System.out.println(gameData.getEndtime());
         System.out.println(gameData.getStarttime());
         System.out.println(gameData.getEndtime()- gameData.getStarttime());
         System.out.println(gameData.getSuccess());
-        System.out.println(gameData.getAllflash());*/
+        System.out.println(gameData.getAllflash());
         gameData.getGameStage().close();
     }
 
