@@ -69,6 +69,8 @@ public class App extends Application {
         sqlPersistance.closeEntityManager();
         gameData.setStarttime(System.currentTimeMillis());
         changeScene("gameGUI");
+        //A játék megjelenítése full screen-ben
+        gameData.getGameStage().setMaximized(true);
     }
 
     //a next level gomb mit csináljon ha megnyomjuk
@@ -105,6 +107,7 @@ public class App extends Application {
     public void changeScene(String scene){
         switch (scene){
             case "menu": {
+                //gameData.getGameStage().setMaximized(true);
                 //fájlbeolvasás
                 Parent menu = null;
                 try { menu = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
@@ -113,11 +116,11 @@ public class App extends Application {
                 //scene váltás
                 gameData.getGameStage().setScene(new Scene(menu));
                 //fejléc eltüntetése
-                //gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
+                gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
                 break;
             }
             case "gameGUI": {
-                //fáj beolvasás
+                //fájl beolvasás
                 Parent gameGUI = null;
                 try { gameGUI = FXMLLoader.load(getClass().getResource("/fxml/gameGUI.fxml"));
                 } catch (IOException e) { e.printStackTrace(); }
@@ -155,19 +158,19 @@ public class App extends Application {
 
     @FXML
     private void exitGame(){
-        /*sqlPersistance.openEntityManager();
+        sqlPersistance.openEntityManager();
         playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(gameData.getLevel());
         playerStat.setGame_time((int) (gameData.getEndtime() - gameData.getStarttime()));
         playerStat.setHit_rate(gameData.getSuccess()/gameData.getAllflash());
         sqlPersistance.insertPlayerStat(playerStat);
-        sqlPersistance.closeEntityManager();*/
+        sqlPersistance.closeEntityManager();
         gameData.setEndtime(System.currentTimeMillis());
-        System.out.println(gameData.getEndtime());
+        /*System.out.println(gameData.getEndtime());
         System.out.println(gameData.getStarttime());
         System.out.println(gameData.getEndtime()- gameData.getStarttime());
         System.out.println(gameData.getSuccess());
-        System.out.println(gameData.getAllflash());
+        System.out.println(gameData.getAllflash());*/
         gameData.getGameStage().close();
     }
 
