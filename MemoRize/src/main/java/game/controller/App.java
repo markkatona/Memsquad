@@ -70,7 +70,7 @@ public class App extends Application {
         gameData.setStarttime(System.currentTimeMillis());
         changeScene("gameGUI");
         //A játék megjelenítése full screen-ben
-        gameData.getGameStage().setMaximized(true);
+        //gameData.getGameStage().setMaximized(true);
     }
 
     //a next level gomb mit csináljon ha megnyomjuk
@@ -116,7 +116,7 @@ public class App extends Application {
                 //scene váltás
                 gameData.getGameStage().setScene(new Scene(menu));
                 //fejléc eltüntetése
-                gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
+                //gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
                 break;
             }
             case "gameGUI": {
