@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -57,6 +58,14 @@ public class App extends Application {
     @FXML
     TextField nem;
 
+    @FXML
+    Label myLevel;
+
+    @FXML
+    Label mySucces;
+
+    @FXML
+    Label myAll;
     //a főmenü gombja mit csináljon ha megnyomjuk
     @FXML
     private void menuAction(ActionEvent actionEvent) {
@@ -76,12 +85,17 @@ public class App extends Application {
     //a next level gomb mit csináljon ha megnyomjuk
     @FXML
     private void nextLevel(ActionEvent actionEvent){
+        //myAll.setText(Integer.toString((int)gameData.getAllflash()));
         gameData.setAllflash(gameData.getAllflash() + gameData.getDb());
+        myAll.setText(Integer.toString(gameData.getDb()));
+
         gameData.setSuccess(gameData.getSuccess() + gameData.getEltalalt());
+        //mySucces.setText(Integer.toString((int)gameData.getSuccess()));
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setN_edik_proba(0);
         gameData.setWait(0);
+        mySucces.setText(Integer.toString(gameData.getEltalalt()));
         alterTableHandler(gameData.getButtons());
         try {
             gameFunction(gameData.getDb());
@@ -182,6 +196,8 @@ public class App extends Application {
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setDb(3);
+        //myAll.setText(Integer.toString(3));
+        //mySucces.setText(Integer.toString(gameData.getEltalalt()));
         gameData.setN_edik_proba(0);
 
         if (gameData.getDb()==0) {
@@ -276,7 +292,6 @@ public class App extends Application {
     public void buttonHandler(Button button){
         int id=Integer.parseInt(button.getId());
         gameData.setN_edik_proba(gameData.getN_edik_proba()+1);
-
         //System.out.println("n-edik proba: "+gameData.getN_edik_proba());
         //System.out.println("ennyiszer kell kattintani: "+gameData.getDb());
         if (gameData.getN_edik_proba()<=gameData.getDb()) {
@@ -287,6 +302,7 @@ public class App extends Application {
                         if (gameData.getHaveToPress2()[gameData.getN_edik_proba()-1]==id){
                             changeToGreen(gameData.getButtons()[id]);
                             gameData.setEltalalt(gameData.getEltalalt() + 1);
+                            mySucces.setText(Integer.toString(gameData.getEltalalt()));
                             //System.out.println("Eltaláltad");
 
                         } else {
@@ -298,6 +314,7 @@ public class App extends Application {
                             result();
                             if (gameData.getEltalalt()==gameData.getDb()){
                                 gameData.setLevel(gameData.getLevel()+1);
+                                myLevel.setText(Integer.toString(gameData.getLevel()));
                                 gameData.setDb(gameData.getDb()+1);
                             }else{
                                 gameData.setSuccess(gameData.getSuccess() + gameData.getEltalalt());
