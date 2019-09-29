@@ -1,0 +1,4 @@
+# Created at 2019-09-29T20:03:25.369
+Boot Manifest-JAR contains absolute paths in classpath 'E:\Memsquad\MemoRize\target\clover\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+

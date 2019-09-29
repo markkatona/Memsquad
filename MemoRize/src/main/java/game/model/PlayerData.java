@@ -21,4 +21,28 @@ public class PlayerData {
     public void setNem(String nem) { this.nem = nem; }
     public void setKitoltes_ideje(Date kitoltes_ideje) { this.kitoltes_ideje = kitoltes_ideje; }
 
+    public boolean isvalidName(String nev) {
+        if (nev.matches("[a-zA-Z]+")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isvalidAge (String nev) {
+        if (nev.matches("[0-9]*")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isvalidGender(String nev) {
+        if (nev.matches("[a-zA-Z]+")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
