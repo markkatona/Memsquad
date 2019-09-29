@@ -24,11 +24,17 @@ public class GameData {
     private int wait;
     private float allflash;
     private float success;
-    private long starttime;
-    private long endtime;
+    private int time;
 
+    public void setTime(int time) {
+        this.time = time;
+    }
 
-    public GameData(){
+    public int getTime() {
+        return time;
+    }
+
+    public GameData() {
 
     }
 
@@ -40,9 +46,9 @@ public class GameData {
         return gameStage;
     }
 
-    public Scene menuView(){
-        Group group= new Group();
-        Scene main= new Scene(group,600,400);
+    public Scene menuView() {
+        Group group = new Group();
+        Scene main = new Scene(group, 600, 400);
 
         return main;
     }
@@ -157,21 +163,5 @@ public class GameData {
 
     public void setSuccess(float success) {
         this.success = success;
-    }
-
-    public float getStarttime() {
-        return starttime;
-    }
-
-    public void setStarttime(long starttime) {
-        this.starttime = starttime;
-    }
-
-    public float getEndtime() {
-        return endtime;
-    }
-
-    public void setEndtime(long endtime) {
-        this.endtime = endtime;
     }
 }

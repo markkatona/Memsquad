@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.security.Key;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,10 +77,16 @@ public class App extends Application {
         playerData.setKitoltes_ideje(Date.valueOf(LocalDate.now()));
         sqlPersistance.insertPlayerData(playerData);
         sqlPersistance.closeEntityManager();
-        gameData.setStarttime(System.currentTimeMillis());
+        gameData.setTime(getCurrentTimeInSeconds());
+        System.out.println(getCurrentTimeInSeconds());
         changeScene("gameGUI");
         //A játék megjelenítése full screen-ben
         //gameData.getGameStage().setMaximized(true);
+    }
+
+    public int getCurrentTimeInSeconds(){
+        LocalTime time = LocalTime.now();
+        return time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond();
     }
 
     //a next level gomb mit csináljon ha megnyomjuk
@@ -172,19 +179,16 @@ public class App extends Application {
 
     @FXML
     private void exitGame(){
+        gameData.setTime(getCurrentTimeInSeconds()-gameData.getTime());
+
         sqlPersistance.openEntityManager();
-        /*playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
+        playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(gameData.getLevel());
-        playerStat.setGame_time((int) (gameData.getEndtime() - gameData.getStarttime()));
+        playerStat.setGame_time(gameData.getTime());
         playerStat.setHit_rate(gameData.getSuccess()/gameData.getAllflash());
         sqlPersistance.insertPlayerStat(playerStat);
         sqlPersistance.closeEntityManager();
-        gameData.setEndtime(System.currentTimeMillis());*/
-        System.out.println(gameData.getEndtime());
-        System.out.println(gameData.getStarttime());
-        System.out.println(gameData.getEndtime()- gameData.getStarttime());
-        System.out.println(gameData.getSuccess());
-        System.out.println(gameData.getAllflash());
+
         gameData.getGameStage().close();
     }
 
