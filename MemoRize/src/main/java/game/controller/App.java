@@ -51,8 +51,6 @@ public class App extends Application {
     Button exitButton;
 
     @FXML
-    Button nextLevel;
-    @FXML
     TextField nev;
     @FXML
     TextField kor;
@@ -67,6 +65,7 @@ public class App extends Application {
 
     @FXML
     Label myAll;
+
     //a főmenü gombja mit csináljon ha megnyomjuk
     @FXML
     private void menuAction(ActionEvent actionEvent) {
@@ -118,7 +117,7 @@ public class App extends Application {
         return result;
     }
 
-    //scene-t változtat
+    //A menü scene-t átváltoztatja a főjáték színére
     public void changeScene(String scene){
         switch (scene){
             case "menu": {
@@ -239,12 +238,16 @@ public class App extends Application {
         }
         timeline.play();
     }
+
+    //Beállítja a gomb színét zöldre
     public void changeToGreen(Button button){
         button.setStyle("-fx-background-color: #00ff00; ");
     }
+    //Beállítja a gomb színét szürkére
     public void changeToGray(Button button){
         button.setStyle("-fx-background-color: #808080; ");
     }
+    //Beállítja a gomb színét pirosra
     public void changeToRed(Button button){
         button.setStyle("-fx-background-color: #ff0000; ");
     }
@@ -261,6 +264,7 @@ public class App extends Application {
         }
     }
 
+    //Blokkolja a táblát addig, amíg az összes gomb fel nem villan
     public void alterTableHandler(Button[] buttons){
         for (int i=0; i<buttons.length; i++){
             final int j=i;
@@ -303,29 +307,17 @@ public class App extends Application {
         }
     }
 
-    //ezt a részt fogja felváltani a view, jelenleg csak sablonként használ egy kézzel setupolt gombot
-    public Button[] gombolo(){
-        Button[] buttons = new Button[36];
-        for (int i = 0; i <buttons.length ; i++) {
-            buttons[i] = new Button();
-            buttons[i].setLayoutX(30*(i%6));
-            buttons[i].setLayoutY(30*(i/6));
-            buttons[i].setMinSize(25, 25);
-            buttons[i].setId(Integer.toString(i));
-            buttons[i].setStyle("-fx-background-color: #808080 ");
-        }
-        return buttons;
-    }
-
     //beállítja azt, hogy egyik gomb sincs megnyomva
     public void allFalse(){
         for (int i = 0; i <36 ; i++) {
             gameData.getHaveToPress()[i]=false;
         }
     }
+
+    //Beállítja az összes gombot szürke szinűre
     public void allDisable(){
         for (int i = 0; i <gameData.getButtons().length ; i++) {
-            gameData.getButtons()[i].setStyle("-fx-background-color: #808080 ");
+            changeToGray(gameData.getButtons()[i]);
         }
     }
 
@@ -336,6 +328,7 @@ public class App extends Application {
         }
     }
 
+    //A játékos játék közben létrejövő adatok kiiratása a konzolra hibakezelés céljából
     public void result(){
         System.out.println("Eltaláltak száma: "+gameData.getEltalalt());
         System.out.println("Elrontottak száma: "+gameData.getElrontott());
