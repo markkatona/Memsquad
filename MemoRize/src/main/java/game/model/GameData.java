@@ -9,13 +9,9 @@ import javafx.stage.Stage;
 
 public class GameData {
     private Stage gameStage;
-
-    private Group mainGroup;
-    private Scene mainScene;
     private Button[] buttons;
     private Boolean[] haveToPress;
     private int[] haveToPress2;
-    private Button start;
     private int eltalalt;
     private int elrontott;
     private int db;
@@ -26,6 +22,10 @@ public class GameData {
     private float success;
     private int time;
 
+    public GameData() {
+
+    }
+
     public void setTime(int time) {
         this.time = time;
     }
@@ -34,39 +34,12 @@ public class GameData {
         return time;
     }
 
-    public GameData() {
-
-    }
-
     public void setGameStage(Stage gameStage) {
         this.gameStage = gameStage;
     }
 
     public Stage getGameStage() {
         return gameStage;
-    }
-
-    public Scene menuView() {
-        Group group = new Group();
-        Scene main = new Scene(group, 600, 400);
-
-        return main;
-    }
-
-    public Group getMainGroup() {
-        return mainGroup;
-    }
-
-    public void setMainGroup(Group mainGroup) {
-        this.mainGroup = mainGroup;
-    }
-
-    public Scene getMainScene() {
-        return mainScene;
-    }
-
-    public void setMainScene(Scene mainScene) {
-        this.mainScene = mainScene;
     }
 
     public Button[] getButtons() {
@@ -83,14 +56,6 @@ public class GameData {
 
     public void setHaveToPress(Boolean[] haveToPress) {
         this.haveToPress = haveToPress;
-    }
-
-    public Button getStart() {
-        return start;
-    }
-
-    public void setStart(Button start) {
-        this.start = start;
     }
 
     public int getEltalalt() {

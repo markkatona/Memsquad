@@ -80,8 +80,6 @@ public class App extends Application {
         gameData.setTime(getCurrentTimeInSeconds());
         System.out.println(getCurrentTimeInSeconds());
         changeScene("gameGUI");
-        //A játék megjelenítése full screen-ben
-        //gameData.getGameStage().setMaximized(true);
     }
 
     public int getCurrentTimeInSeconds(){
@@ -89,15 +87,11 @@ public class App extends Application {
         return time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond();
     }
 
-    //a next level gomb mit csináljon ha megnyomjuk
     @FXML
     private void nextLevel(ActionEvent actionEvent){
-        //myAll.setText(Integer.toString((int)gameData.getAllflash()));
         gameData.setAllflash(gameData.getAllflash() + gameData.getDb());
         myAll.setText(Integer.toString(gameData.getDb()));
-
         gameData.setSuccess(gameData.getSuccess() + gameData.getEltalalt());
-        //mySucces.setText(Integer.toString((int)gameData.getSuccess()));
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setN_edik_proba(0);
@@ -128,7 +122,6 @@ public class App extends Application {
     public void changeScene(String scene){
         switch (scene){
             case "menu": {
-                //gameData.getGameStage().setMaximized(true);
                 //fájlbeolvasás
                 Parent menu = null;
                 try { menu = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
@@ -137,7 +130,6 @@ public class App extends Application {
                 //scene váltás
                 gameData.getGameStage().setScene(new Scene(menu));
                 //fejléc eltüntetése
-                //gameData.getGameStage().initStyle(StageStyle.UNDECORATED);
                 break;
             }
             case "gameGUI": {
@@ -180,7 +172,6 @@ public class App extends Application {
     @FXML
     private void exitGame(){
         gameData.setTime(getCurrentTimeInSeconds()-gameData.getTime());
-
         sqlPersistance.openEntityManager();
         playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
         playerStat.setXp_lvl(gameData.getLevel());
@@ -200,8 +191,6 @@ public class App extends Application {
         gameData.setElrontott(0);
         gameData.setEltalalt(0);
         gameData.setDb(3);
-        //myAll.setText(Integer.toString(3));
-        //mySucces.setText(Integer.toString(gameData.getEltalalt()));
         gameData.setN_edik_proba(0);
 
         if (gameData.getDb()==0) {
@@ -223,13 +212,11 @@ public class App extends Application {
                 new KeyFrame(Duration.millis(200), event -> {
                     changeToGreen(gameData.getButtons()[randomnumbers.get(0)]);
                     gameData.getHaveToPress()[randomnumbers.get(0)]=true;
-                    //System.out.println(randomnumbers.get(0));
                 }),
                 new KeyFrame(Duration.millis(1200), event -> {
                     changeToGray(gameData.getButtons()[randomnumbers.get(0)]);
                     randomnumbers.remove(0);
                     gameData.setWait(gameData.getWait()+1);
-                    System.out.println(gameData.getWait());
                     if (gameData.getWait()==gameData.getDb()){
                         tableHandler(gameData.getButtons());
                     }
@@ -263,17 +250,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        //////////////////////////////////////////////////////
-        //ezt kell majd berakni az exit game gomb eventjének//
-        //////////////////////////////////////////////////////
-        /*sqlPersistance.openEntityManager();
-        playerStat.setUser_id(sqlPersistance.readIdFromPlayerData());
-        playerStat.setXp_lvl(7);
-        playerStat.setGame_time(300);
-        playerStat.setHit_rate(1);
-        sqlPersistance.insertPlayerStat(playerStat);
-        sqlPersistance.closeEntityManager();*/
-
         launch(args);
     }
 
@@ -296,23 +272,17 @@ public class App extends Application {
     public void buttonHandler(Button button){
         int id=Integer.parseInt(button.getId());
         gameData.setN_edik_proba(gameData.getN_edik_proba()+1);
-        //System.out.println("n-edik proba: "+gameData.getN_edik_proba());
-        //System.out.println("ennyiszer kell kattintani: "+gameData.getDb());
         if (gameData.getN_edik_proba()<=gameData.getDb()) {
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.millis(20), event -> {
-                        //System.out.println("Az adott elem sorszáma: "+id);
-                        //if (gameData.getHaveToPress()[id]) {
                         if (gameData.getHaveToPress2()[gameData.getN_edik_proba()-1]==id){
                             changeToGreen(gameData.getButtons()[id]);
                             gameData.setEltalalt(gameData.getEltalalt() + 1);
                             mySucces.setText(Integer.toString(gameData.getEltalalt()));
-                            //System.out.println("Eltaláltad");
 
                         } else {
                             changeToRed(gameData.getButtons()[id]);
                             gameData.setElrontott(gameData.getElrontott() + 1);
-                            //System.out.println("Elrontottad");
                         }
                         if (gameData.getN_edik_proba()==gameData.getDb()){
                             result();
@@ -372,5 +342,4 @@ public class App extends Application {
         System.out.println("Teljesítmény: "+(int)((gameData.getEltalalt()/(double)gameData.getDb())*100)+"%");
         System.out.println("Az általad elért szint: "+gameData.getLevel());
     }
-
 }
